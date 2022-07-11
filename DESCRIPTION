@@ -1,0 +1,27 @@
+Package: copulaSim
+Title: Trial Simulation by Copula modeling
+Version: 0.0.1
+Authors@R: 
+    c(person("Pei-Shan", "Yen", , "peishan0824@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+      person("Pei-Shan", "Yen", , "peishan0824@gmail.com", role = c("ctb")))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Depends:
+    R (>= 4.0.0)
+Imports:
+    dplyr (>= 1.0.0),
+    magrittr (>= 1.5),
+    mvtnorm (>= 1.0-12),
+    rlang,
+    stats,
+    tibble,
+    utils
+Suggests: 
+    testthat (>= 3.1.1),
+    Ball (>= 1.3.0),
+    energy (>= 1.7-0),
+    TwoCop
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
