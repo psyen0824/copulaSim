@@ -2,7 +2,7 @@
 % Please edit documentation in R/copula.sim.R
 \name{data.diff.test}
 \alias{data.diff.test}
-\title{The function to perform the hypothesis on the input data and the simulated data}
+\title{Performing the hypothesis test to compare the difference between the empirical data and the simulated data}
 \usage{
 data.diff.test(x, y, test.method)
 }
@@ -12,9 +12,9 @@ data.diff.test(x, y, test.method)
 \item{y}{A numeric matrix which is compared to \code{x}.}
 
 \item{test.method}{A string to specify the hypothesis test used to detect the difference
-between input data and the simulated data. Other possible methods are
+between input data and the simulated data. Default is "none". Possible methods are
 energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-("equalCopula", TwoCop package is needed, so you need to install it from CRAN archive.).}
+("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.}
 }
 \value{
 A list with two elements.
@@ -24,5 +24,5 @@ A list with two elements.
 }
 }
 \description{
-The function to perform the hypothesis on the input data and the simulated data
+Performing the hypothesis test to compare the difference between the empirical data and the simulated data
 }

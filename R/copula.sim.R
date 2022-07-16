@@ -9,12 +9,8 @@ empirical.ecdf.inv <-
     mapply(
       function(df, s.data, m, sd) {
         inv.data <-
-          ecdf.inv(df$data.input.transformed,
-                   pnorm(s.data, mean = m, sd = sd),
-                   sort.flag = FALSE)
-        if (df$data.is.integer[1]) {
-          inv.data <- ceiling(inv.data)
-        }
+          ecdf.inv(x = df$data.input.transformed, p = pnorm(s.data, mean = m, sd = sd), sort.flag = FALSE)
+        if (df$data.is.integer[1]) { inv.data <- ceiling(inv.data)}
         return(inv.data)
       },
       data.df.split.arm,
@@ -25,62 +21,57 @@ empirical.ecdf.inv <-
     )
   }
 
-#' The function to perform the hypothesis on the input data and the simulated data
+#' Performing the hypothesis test to compare the difference between the empirical data and the simulated data
 #'
 #' @param x A numeric matrix.
 #' @param y A numeric matrix which is compared to \code{x}.
 #' @param test.method A string to specify the hypothesis test used to detect the difference
-#'   between input data and the simulated data. Other possible methods are
+#'   between input data and the simulated data. Default is "none". Possible methods are
 #'   energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-#'   ("equalCopula", TwoCop package is needed, so you need to install it from CRAN archive.).
+#'   ("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.
 #    The equability of dependence is typically slow due to Monte Carlo simulation.
 #' @return A list with two elements.
 #'   1. p.value: the p-value of the hypothesis test.
 #'   2. test.result: the returned object of the hypothesis test.
 data.diff.test <- function(x, y, test.method) {
   if (test.method == "energy") {
-    if(!requireNamespace("energy")) {
-      stop("You need to install energy first.")
-    }
-    test.res <- energy::eqdist.etest(rbind(x, y), c(nrow(x), nrow(y)), R=999)
+    if(!requireNamespace("energy")) {stop("You need to install R package energy.")}
+     test.res <- energy::eqdist.etest(rbind(x, y), c(nrow(x), nrow(y)), R=999)
     return(list(p.value = test.res$p.value, test.result = test.res))
   } else if (test.method == "ball") {
-    if(!requireNamespace("Ball")) {
-      stop("You need to install Ball first.")
-    }
-    test.res <- Ball::bd.test(x, y)
+    if(!requireNamespace("Ball")) {stop("You need to install R package Ball.")}
+     test.res <- Ball::bd.test(x, y)
     return(list(p.value = test.res$p.value, test.result = test.res))
   } else if (test.method == "equalCopula") {
-    if(!requireNamespace("TwoCop")) {
-      stop("You need to install TwoCop first.")
-    }
-    test.res <- TwoCop::TwoCop(x, y)
+    if(!requireNamespace("TwoCop")) {stop("You need to install R package TwoCop.")}
+     test.res <- TwoCop::TwoCop(x, y)
     return(list(p.value = test.res$pvalue, test.result = test.res))
-  } else {
-    stop("No such test.method!")
-  }
+  } else {stop("No such test.method!")}
 }
 
-#' The function to simulate Copula datasets
+#' To generate simulated datasets from empirical data by utilizing the copula invariance property.
 #'
-#' @param data.input The empirical data that you aimed to simulate.
-#' @param id.vec The identifications for each observation of the input data.
-#' @param arm.vec The column for identify the arm of the clinical trial.
-#' @param n.patient The targeted number of patients in simulated data.
+#' Based on the empirical data, generating simulated datasets through the copula invariance property.
+#' @param data.input The empirical patient-level data to be used to simulate new virtual patient data.
+#' @param id.vec The ID for individual patient in the input data.
+#' @param arm.vec The column to identify the arm in clinical trial.
+#' @param n.patient The targeted number of patients in each simulated datasets.
 #' @param n.simulation The number of simulated datasets.
 #' @param seed The random seed. Default is NULL to use the current seed.
-#' @param std.norm.lb The reasonable minimum of standardized normal value.
-#' @param std.norm.ub The reasonable maximum of standardized normal value.
+#' @param std.norm.lb The minimum quantile value of standardized normal value
+#'   when performing quantile transformation of empirical data.
+#' @param std.norm.ub The maximum quantile value of standardized normal value
+#'   when performing quantile transformation of empirical data.
 #' @param validation.type A string to specify the hypothesis test used to detect the difference
-#'   between input data and the simulated data. Default is "none". Other possible methods are
+#'   between input data and the simulated data. Default is "none". Possible methods are
 #'   energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-#'   ("equalCopula", TwoCop package is needed, so you need to install it from CRAN archive.).
+#'   ("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.
 #    The equability of dependence is typically slow due to Monte Carlo simulation.
 #' @param validation.sig.lvl The significant level (alpha) value for the hypothesis test.
-#' @param rmvnorm.matrix.decomp.method The method to do the matrix decomposition used in the function \code{rmvnorm}.
-#' @param verbose A boolean value to specify whether to print message.
+#' @param rmvnorm.matrix.decomp.method The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".
+#' @param verbose A Boolean value to specify whether to print message for simulation process or not.
 #' @return A copula.sim object with three elements.
-#'   1. data.input: original data; empirical data; historical data
+#'   1. data.input: empirical data
 #'   2. data.transform: quantile transformation of data.input
 #'   3. data.simul: simulated data
 #' @export
@@ -90,6 +81,25 @@ data.diff.test <- function(x, y, test.method) {
 #' @importFrom dplyr between percent_rank bind_rows group_split if_else left_join
 #' @importFrom dplyr select ungroup arrange group_by summarise filter mutate n
 #' @importFrom mvtnorm rmvnorm
+#' @references Sklar, A. (1959). Functions de repartition an dimensionset leursmarges., Paris: PublInst Stat.
+#' @references Nelsen, R. B. (2007). An introduction to copulas. Springer Science & Business Media.
+#' @references Ross, S. M. (2013). Simulation. Academic Press.
+#' @author Pei-Shan Yen, Xuemin Gu
+#' @examples
+##'
+##' library(copulaSim)
+##'
+##' ## Generate Empirical Data - assume the 2-arm empirical data follows multivariate normal data.
+##' library(mvtnorm)
+##' arm1 <- rmvnorm(n = 40, mean  = rep(10, 5), sigma = diag(5))
+##' arm2 <- rmvnorm(n = 40, mean  = rep(12, 5), sigma = diag(5))
+##' test_data <- as.data.frame(cbind(1:80, rep(1:2, each = 40), rbind(arm1, arm2)))
+##' colnames(test_data) <- c("id","arm",paste0("outcome_", 1:5))
+##'
+##' ## Generate 100 simulated datasets
+##' copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data[,1], arm.vec = test_data[,2],
+##' n.patient = 100 , n.simulation = 100, seed = 2022)
+
 copula.sim <- function(data.input,
                        id.vec,
                        arm.vec,
@@ -125,7 +135,7 @@ copula.sim <- function(data.input,
     stop("data.input must be non-NA.")
   }
 
-  # check id and arm are valide
+  # check id and arm are valid
   if (any(is.na(id.vec))) {
     stop("id.vec must be non-NA.")
   }
@@ -184,16 +194,16 @@ copula.sim <- function(data.input,
     set_colnames(c("id", "arm", "col.num")) %>%
     as_tibble %>%
     left_join(colname.df, by = "col.num")
-  data.df$data.input <- as.vector(data.input)
+  data.df$data.input <- as.vector(as.matrix(data.input))
 
-  # Step 3: calculate the ranks of empirical marginal for performing quantile transformation.
-  #            and mapping marginal standard uniform to marginal standard normal Z
+  # Step 2: calculate the ranks of empirical marginal for performing quantile transformation.
+  #         and mapping marginal standard uniform to marginal standard normal Z
   data.transform <- data.df %>%
     group_by(.data$arm, .data$col.num) %>%
     # check the data.input (per dimension) is integers
     mutate(data.is.integer = all(mean(.data$data.input - floor(.data$data.input)) <= 1e-6)) %>%
     # add shift values if data.input is integers
-    mutate(data.input.transformed = .data$data.input + if_else(.data$data.is.integer, runif(n())-1, 0)) %>%
+    mutate(data.input.transformed = .data$data.input + if_else(.data$data.is.integer, runif(n()) - 1, 0)) %>%
     # quantile transformation: marginal dist CDF^(-1) follow Unif(0,1) with reasonable bounds
     mutate(data.norm = pmax(pmin(qnorm(percent_rank(.data$data.input)), std.norm.ub), std.norm.lb)) %>%
     ungroup
@@ -204,6 +214,7 @@ copula.sim <- function(data.input,
   data.split.arm <- data.transform %>%
     group_by(.data$arm) %>%
     group_split
+
   data.norm.mean.list <- data.split.arm %>%
     lapply(function(df){
       df %>% group_by(.data$col.num) %>%
@@ -219,6 +230,8 @@ copula.sim <- function(data.input,
         (function(temp.df) cov(matrix(temp.df$data.norm, ncol = max(temp.df$col.num))))
     })
 
+  arm.unique.vec <- data.split.arm %>% sapply(function(df) df$arm[1])
+
   # get simulation data
   data.simul <- lapply(seq_len(n.simulation), function(sim.id){
     if (verbose)
@@ -227,21 +240,21 @@ copula.sim <- function(data.input,
     sim.data.df <- mapply(function(arm, mean.vec, cov.mat) {
       con.sim <- TRUE
       while (con.sim) {
-        # Step 4. Using multivariate mean and dependence structure to simulate multivariate normal distribution
+        # Step 3. Using multivariate mean and dependence structure to simulate multivariate normal distribution
         sim.data <- rmvnorm(n.patient,
                             mean = mean.vec,
                             sigma = cov.mat,
                             method = rmvnorm.matrix.decomp.method) %>%
-          # Step 5. recover the simulated data to the range of empirical via quantile transformation
+        # Step 4. recover the simulated data to the range of empirical via quantile transformation
           empirical.ecdf.inv(arm, data.transform, mean.vec, cov.mat)
         if (validation.type == "none") {
           con.sim <- FALSE
         } else {
-          # step 5-1. make a hypothesis test on the simulated data
+          # step 4-1. make a hypothesis test to compare the difference between emperical data and the simulated data
           p.value <- data.diff.test(data.input[arm.vec == arm, ], sim.data, validation.type)$p.value
           if(verbose)
             cat(sprintf("p.value for %s test: %.4f\n", validation.type, p.value))
-          con.sim <- p.value < validation.sig.lvl
+            con.sim <- p.value < validation.sig.lvl
         }
       }
       # output the simulated data if no need for validation or pass the hypothesis test
@@ -256,7 +269,7 @@ copula.sim <- function(data.input,
       output.df$data.sim <- as.vector(sim.data)
       return(output.df)
     },
-    seq_along(data.norm.mean.list),
+    arm.unique.vec,
     data.norm.mean.list,
     data.norm.cov.mat.list,
     SIMPLIFY = FALSE
@@ -277,11 +290,10 @@ copula.sim <- function(data.input,
   return(res)
 }
 
-
-#' The function to convert data.simul in a copula.sim object into a list of matrices
+#' Converting data.simul in a copula.sim object into a list of wide-form matrices
 #'
 #' @param object A copula object.
-#' @return A list of matrices which is simulated data.
+#' @return A list of matrices for simulated data.
 #' @export
 #' @importFrom dplyr distinct
 #' @importFrom magrittr set_colnames set_names
@@ -313,4 +325,3 @@ extract.data.sim <- function(object) {
   names(output.list) <- sprintf("sim.id=%i", sapply(sim.data.split, function(df) df$sim.id[1]))
   return(output.list)
 }
-

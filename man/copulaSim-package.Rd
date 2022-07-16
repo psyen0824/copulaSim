@@ -2,15 +2,27 @@
 % Please edit documentation in R/zzz.R
 \docType{package}
 \name{copulaSim-package}
+\alias{copulaSim}
 \alias{copulaSim-package}
-\title{Simulation by Copula modeling}
+\title{copulaSim: Virtual Patient Simulation by Copula Invariance Property}
 \description{
-Description
-line1
-line2
+To optimize clinical trial designs and data analysis methods consistently through trial simulation, it is important to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. Using copula invariance property, we generate virtual patient data based on the dependence structure of observed patient-level data. The function copula.sim can generate virtual patient data with optional data validation methods that are based on energy distance and ball divergence measurement. The function compare.copula.sim can conduct comparison of marginal mean and covariance of simulated data. To simulate patient-level data from a hypothetical treatment arm that would perform differently from the observed data, the function new.arm.copula.sim can be used to generate new multivariate data with the same dependence structure of the original data but with a shifted mean vector.
 }
-\references{
-\enumerate{
-\item Yen, P.-S. (2022).
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/psyen0824/ColpulaSim}
 }
+
+}
+\author{
+\strong{Maintainer}: Pei-Shan Yen \email{peishan0824@gmail.com} (\href{https://orcid.org/0000-0001-7386-0552}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Xuemin Gu \email{xuemin.gu@abbvie.com} [contributor]
+  \item Jenny Jiao \email{jenny.jiao@abbvie.com} [contributor]
+  \item Jane Zhang \email{jane.zhang@abbvie.com} [contributor]
+}
+
 }

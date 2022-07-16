@@ -2,7 +2,7 @@
 % Please edit documentation in R/copula.sim.R
 \name{extract.data.sim}
 \alias{extract.data.sim}
-\title{The function to convert data.simul in a copula.sim object into a list of matrices}
+\title{Converting data.simul in a copula.sim object into a list of wide-form matrices}
 \usage{
 extract.data.sim(object)
 }
@@ -10,8 +10,8 @@ extract.data.sim(object)
 \item{object}{A copula object.}
 }
 \value{
-A list of matrices which is simulated data.
+A list of matrices for simulated data.
 }
 \description{
-The function to convert data.simul in a copula.sim object into a list of matrices
+Converting data.simul in a copula.sim object into a list of wide-form matrices
 }

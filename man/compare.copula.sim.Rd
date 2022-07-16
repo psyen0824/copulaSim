@@ -2,7 +2,7 @@
 % Please edit documentation in R/compare.copula.sim.R
 \name{compare.copula.sim}
 \alias{compare.copula.sim}
-\title{The function to do the comparison between input dataset and simulated datasets.}
+\title{Performing the comparison between empirical data and multiple simulated datasets.}
 \usage{
 compare.copula.sim(object)
 }
@@ -10,8 +10,11 @@ compare.copula.sim(object)
 \item{object}{A copula.sim object for the comparison.}
 }
 \value{
-Returned simulated data
+Returned the comparison of marginal mean and covariance
 }
 \description{
-The function to do the comparison between input dataset and simulated datasets.
+Performing the comparison between empirical data and multiple simulated datasets.
+}
+\author{
+Pei-Shan Yen, Xuemin Gu
 }

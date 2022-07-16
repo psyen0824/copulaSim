@@ -1,7 +1,7 @@
-#' Get the inverse of ECDF
+#' Obtaining the inverse of marginal empirical cumulative distribution (ECDF)
 #'
-#' @param x A vector of numbers which is the original dataset.
-#' @param p A vector of numbers which is the probability of the new data.
+#' @param x A vector of numbers which is the marginal empirical data.
+#' @param p A vector of numbers which is the probability of the simulated data.
 #' @param sort.flag A boolean value to specify whether to sort the output data.
 #' @return The inverse values of \code{p} based on ECDF of \code{x}.
 #' @examples

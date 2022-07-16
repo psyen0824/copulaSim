@@ -2,7 +2,7 @@
 % Please edit documentation in R/copula.sim.R
 \name{copula.sim}
 \alias{copula.sim}
-\title{The function to simulate Copula datasets}
+\title{To generate simulated datasets from empirical data by utilizing the copula invariance property.}
 \usage{
 copula.sim(
   data.input,
@@ -20,41 +20,68 @@ copula.sim(
 )
 }
 \arguments{
-\item{data.input}{The empirical data that you aimed to simulate.}
+\item{data.input}{The empirical patient-level data to be used to simulate new virtual patient data.}
 
-\item{id.vec}{The identifications for each observation of the input data.}
+\item{id.vec}{The ID for individual patient in the input data.}
 
-\item{arm.vec}{The column for identify the arm of the clinical trial.}
+\item{arm.vec}{The column to identify the arm in clinical trial.}
 
-\item{n.patient}{The targeted number of patients in simulated data.}
+\item{n.patient}{The targeted number of patients in each simulated datasets.}
 
 \item{n.simulation}{The number of simulated datasets.}
 
 \item{seed}{The random seed. Default is NULL to use the current seed.}
 
 \item{validation.type}{A string to specify the hypothesis test used to detect the difference
-between input data and the simulated data. Default is "none". Other possible methods are
+between input data and the simulated data. Default is "none". Possible methods are
 energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-("equalCopula", TwoCop package is needed, so you need to install it from CRAN archive.).}
+("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.}
 
 \item{validation.sig.lvl}{The significant level (alpha) value for the hypothesis test.}
 
-\item{std.norm.lb}{The reasonable minimum of standardized normal value.}
+\item{std.norm.lb}{The minimum quantile value of standardized normal value
+when performing quantile transformation of empirical data.}
 
-\item{std.norm.ub}{The reasonable maximum of standardized normal value.}
+\item{std.norm.ub}{The maximum quantile value of standardized normal value
+when performing quantile transformation of empirical data.}
 
-\item{rmvnorm.matrix.decomp.method}{The method to do the matrix decomposition used in the function \code{rmvnorm}.}
+\item{rmvnorm.matrix.decomp.method}{The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".}
 
-\item{verbose}{A boolean value to specify whether to print message.}
+\item{verbose}{A Boolean value to specify whether to print message for simulation process or not.}
 }
 \value{
 A copula.sim object with three elements.
 \enumerate{
-\item data.input: original data; empirical data; historical data
+\item data.input: empirical data
 \item data.transform: quantile transformation of data.input
 \item data.simul: simulated data
 }
 }
 \description{
-The function to simulate Copula datasets
+Based on the empirical data, generating simulated datasets through the copula invariance property.
+}
+\examples{
+
+library(copulaSim)
+
+## Generate Empirical Data - assume the 2-arm empirical data follows multivariate normal data.
+library(mvtnorm)
+arm1 <- rmvnorm(n = 40, mean  = rep(10, 5), sigma = diag(5))
+arm2 <- rmvnorm(n = 40, mean  = rep(12, 5), sigma = diag(5))
+test_data <- as.data.frame(cbind(1:80, rep(1:2, each = 40), rbind(arm1, arm2)))
+colnames(test_data) <- c("id","arm",paste0("outcome_", 1:5))
+
+## Generate 100 simulated datasets
+copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data[,1], arm.vec = test_data[,2],
+n.patient = 100 , n.simulation = 100, seed = 2022)
+}
+\references{
+Sklar, A. (1959). Functions de repartition an dimensionset leursmarges., Paris: PublInst Stat.
+
+Nelsen, R. B. (2007). An introduction to copulas. Springer Science & Business Media.
+
+Ross, S. M. (2013). Simulation. Academic Press.
+}
+\author{
+Pei-Shan Yen, Xuemin Gu
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/new.arm.copula.sim.R
 \name{new.arm.copula.sim}
 \alias{new.arm.copula.sim}
-\title{The function to simulate Copula datasets with new arms}
+\title{Simulating new multivariate datasets with shifted mean vector from existing empirical data}
 \usage{
 new.arm.copula.sim(
   data.input,
@@ -21,13 +21,33 @@ new.arm.copula.sim(
 )
 }
 \arguments{
-\item{data.input, id.vec, arm.vec, n.patient, n.simulation, seed, std.norm.lb, std.norm.ub, validation.type, validation.sig.lvl, rmvnorm.matrix.decomp.method, verbosee}{Please refer to the function \link{copula.sim}.}
+\item{data.input, id.vec, arm.vec, n.patient, n.simulation, seed, std.norm.lb, std.norm.ub}{Please refer to the function \link{copula.sim}.}
 
 \item{shift.vec.list}{A list of numeric vectors to specify the mean-shifted values for new arms.}
+
+\item{validation.type, validation.sig.lvl, rmvnorm.matrix.decomp.method, verbose}{Please refer to the function \link{copula.sim}.}
 }
 \value{
 Please refer to the function \link{copula.sim}.
 }
 \description{
-The function to simulate Copula datasets with new arms
+Simulating new multivariate datasets with shifted mean vector from existing empirical data
+}
+\examples{
+
+library(copulaSim)
+
+## Generate Empirical Data - assume the 1-arm empirical data follows multivariate normal data.
+library(mvtnorm)
+arm1 <- rmvnorm(n = 80, mean  = rep(10, 5), sigma = diag(5))
+test_data <- as.data.frame(cbind(1:80, rep(1,80), arm1))
+colnames(test_data) <- c("id", "arm", paste0("outcome_", 1:5))
+
+## Generate 1 simulated datasets with one empirical arm and two new-arm.
+new.arm.copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data[,1],
+  arm.vec = test_data[,2], n.patient = 100 , n.simulation = 1, seed = 2022,
+  shift.vec.list = list(rep(1.5,5), rep(3,5) ))
+}
+\author{
+Pei-Shan Yen, Xuemin Gu, Jenny Jiao, Jane Zhang
 }

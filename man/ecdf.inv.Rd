@@ -2,14 +2,14 @@
 % Please edit documentation in R/ecdf.inv.R
 \name{ecdf.inv}
 \alias{ecdf.inv}
-\title{Get the inverse of ECDF}
+\title{Obtaining the inverse of marginal empirical cumulative distribution (ECDF)}
 \usage{
 ecdf.inv(x, p, sort.flag = TRUE)
 }
 \arguments{
-\item{x}{A vector of numbers which is the original dataset.}
+\item{x}{A vector of numbers which is the marginal empirical data.}
 
-\item{p}{A vector of numbers which is the probability of the new data.}
+\item{p}{A vector of numbers which is the probability of the simulated data.}
 
 \item{sort.flag}{A boolean value to specify whether to sort the output data.}
 }
@@ -17,7 +17,7 @@ ecdf.inv(x, p, sort.flag = TRUE)
 The inverse values of \code{p} based on ECDF of \code{x}.
 }
 \description{
-Get the inverse of ECDF
+Obtaining the inverse of marginal empirical cumulative distribution (ECDF)
 }
 \examples{
 ecdf.inv(0:10, c(0.25, 0.75))
