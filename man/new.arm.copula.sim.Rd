@@ -2,9 +2,7 @@
 % Please edit documentation in R/new.arm.copula.sim.R
 \name{new.arm.copula.sim}
 \alias{new.arm.copula.sim}
-\title{Simulating new multivariate datasets with shifted mean vector from existing empirical data
-\subsection{TEST}{
-}}
+\title{Simulating new multivariate datasets with shifted mean vector from existing empirical data}
 \usage{
 new.arm.copula.sim(
   data.input,
@@ -34,8 +32,6 @@ Please refer to the function \link{copula.sim}.
 }
 \description{
 Simulating new multivariate datasets with shifted mean vector from existing empirical data
-\subsection{TEST}{
-}
 }
 \examples{
 
