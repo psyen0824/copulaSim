@@ -1,5 +1,5 @@
 #' Simulating new multivariate datasets with shifted mean vector from existing empirical data
-#'
+#' ### TEST
 #' @param data.input,id.vec,arm.vec,n.patient,n.simulation,seed,std.norm.lb,std.norm.ub Please refer to the function \link{copula.sim}.
 #' @param validation.type,validation.sig.lvl,rmvnorm.matrix.decomp.method,verbose Please refer to the function \link{copula.sim}.
 #' @param shift.vec.list A list of numeric vectors to specify the mean-shifted values for new arms.
