@@ -10,7 +10,16 @@ compare.copula.sim(object)
 \item{object}{A copula.sim object for the comparison.}
 }
 \value{
-Returned the comparison of marginal mean and covariance
+Returned the comparison of marginal parameter and covariance.
+\enumerate{
+\item mean.comparison: comparison between empirical mean and average value of simulated mean.
+(1) simu.mean: average value of simulated mean
+(2) simu.sd: average value of simulated standard error
+(3) simu.mean.RB: relative bias for marginal mean
+(4) simu.mean.SB: standardized bias for marginal mean
+(5) simu.mean.RMSE: root mean square error for marginal mean
+\item cov.comparison: comparison between empirical covariance and average value of simulated covariance
+}
 }
 \description{
 Performing the comparison between empirical data and multiple simulated datasets.

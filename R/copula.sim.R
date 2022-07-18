@@ -254,7 +254,7 @@ copula.sim <- function(data.input,
           p.value <- data.diff.test(data.input[arm.vec == arm, ], sim.data, validation.type)$p.value
           if(verbose)
             cat(sprintf("p.value for %s test: %.4f\n", validation.type, p.value))
-            con.sim <- p.value < validation.sig.lvl
+          con.sim <- p.value < validation.sig.lvl
         }
       }
       # output the simulated data if no need for validation or pass the hypothesis test

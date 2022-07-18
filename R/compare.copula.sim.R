@@ -1,7 +1,15 @@
 #' Performing the comparison between empirical data and multiple simulated datasets.
 #'
 #' @param object A copula.sim object for the comparison.
-#' @return Returned the comparison of marginal mean and covariance
+#' @return Returned the comparison of marginal parameter and covariance.
+#'  1. mean.comparison: comparison between empirical mean and average value of simulated mean.
+#'     (1) simu.mean: average value of simulated mean
+#'     (2) simu.sd: average value of simulated standard error
+#'     (3) simu.mean.RB: relative bias for marginal mean
+#'     (4) simu.mean.SB: standardized bias for marginal mean
+#'     (5) simu.mean.RMSE: root mean square error for marginal mean
+#'  2. cov.comparison: comparison between empirical covariance and average value of simulated covariance
+#'
 #' @export
 #' @author Pei-Shan Yen, Xuemin Gu
 #' @importFrom stats sd quantile
