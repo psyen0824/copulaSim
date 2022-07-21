@@ -69,7 +69,7 @@ data.diff.test <- function(x, y, test.method) {
 #    The equability of dependence is typically slow due to Monte Carlo simulation.
 #' @param validation.sig.lvl The significant level (alpha) value for the hypothesis test.
 #' @param rmvnorm.matrix.decomp.method The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".
-#' @param verbose A Boolean value to specify whether to print message for simulation process or not.
+#' @param verbose A logical value to specify whether to print message for simulation process or not.
 #' @return A copula.sim object with three elements.
 #'   1. data.input: empirical data
 #'   2. data.transform: quantile transformation of data.input

@@ -2,7 +2,7 @@
 #'
 #' @param x A vector of numbers which is the marginal empirical data.
 #' @param p A vector of numbers which is the probability of the simulated data.
-#' @param sort.flag A boolean value to specify whether to sort the output data.
+#' @param sort.flag A logical value to specify whether to sort the output data.
 #' @return The inverse values of \code{p} based on ECDF of \code{x}.
 #' @examples
 #' ecdf.inv(0:10, c(0.25, 0.75))
