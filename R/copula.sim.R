@@ -150,7 +150,7 @@ copula.sim <- function(data.input,
   if ((abs(n.simulation - floor(n.simulation)) > 1e-6) || (n.simulation <= 0)) {
     stop("n.simulation must be a positive integer.")
   }
-  if (is.null(seed) || !is.numeric(seed)) {
+  if (!is.null(seed) && !is.numeric(seed)) {
     stop("seed must be a number or NULL.")
   }
   if (!(validation.type %in% c("none", "energy", "ball", "equalCopula"))) {
