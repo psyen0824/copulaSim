@@ -47,7 +47,7 @@ when performing quantile transformation of empirical data.}
 
 \item{rmvnorm.matrix.decomp.method}{The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".}
 
-\item{verbose}{A Boolean value to specify whether to print message for simulation process or not.}
+\item{verbose}{A logical value to specify whether to print message for simulation process or not.}
 }
 \value{
 A copula.sim object with three elements.

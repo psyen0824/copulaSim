@@ -11,7 +11,7 @@ ecdf.inv(x, p, sort.flag = TRUE)
 
 \item{p}{A vector of numbers which is the probability of the simulated data.}
 
-\item{sort.flag}{A boolean value to specify whether to sort the output data.}
+\item{sort.flag}{A logical value to specify whether to sort the output data.}
 }
 \value{
 The inverse values of \code{p} based on ECDF of \code{x}.
