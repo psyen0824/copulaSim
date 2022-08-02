@@ -65,9 +65,10 @@ compare.copula.sim <- function(object) {
     left_join(simu.diff.df, c("arm", "col.num")) %>%
     mutate(marginal.name = colnames(object$data.input)) %>%
     select(
-      .data$marginal.name, .data$arm, .data$empir.sample, .data$simu.sample,
-      .data$n.simu, .data$empir.mean, .data$simu.mean, .data$empir.sd,
-      .data$simu.sd, .data$simu.mean.RB, .data$simu.mean.SB, .data$simu.mean.RMSE
+      .data$marginal.name, .data$arm, .data$empir.sample, .data$simu.sample, .data$n.simu,
+      .data$empir.mean, .data$simu.mean,
+      .data$simu.mean.RB, .data$simu.mean.SB, .data$simu.mean.RMSE,
+      .data$empir.sd, .data$simu.sd
     ) %>% ungroup
 
   data.transform.split <- object$data.transform %>%
