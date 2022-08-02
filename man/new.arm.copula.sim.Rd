@@ -14,14 +14,12 @@ new.arm.copula.sim(
   seed = NULL,
   validation.type = "none",
   validation.sig.lvl = 0.05,
-  std.norm.lb = -3,
-  std.norm.ub = 3,
   rmvnorm.matrix.decomp.method = "svd",
   verbose = TRUE
 )
 }
 \arguments{
-\item{data.input, id.vec, arm.vec, n.patient, n.simulation, seed, std.norm.lb, std.norm.ub}{Please refer to the function \link{copula.sim}.}
+\item{data.input, id.vec, arm.vec, n.patient, n.simulation, seed}{Please refer to the function \link{copula.sim}.}
 
 \item{shift.vec.list}{A list of numeric vectors to specify the mean-shifted values for new arms.}
 

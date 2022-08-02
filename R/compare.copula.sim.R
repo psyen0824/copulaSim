@@ -23,8 +23,8 @@ compare.copula.sim <- function(object) {
     group_by(.data$arm, .data$col.num) %>%
     summarise(
       empir.sample = n(),
-      empir.mean = mean(.data$data.input),
-      empir.sd = sd(.data$data.input),
+      empir.mean = round(mean(.data$data.input), 4),
+      empir.sd = round( sd(.data$data.input), 4),
     )
 
   size.stat.df <- object$data.simul %>%

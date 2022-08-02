@@ -58,10 +58,6 @@ data.diff.test <- function(x, y, test.method) {
 #' @param n.patient The targeted number of patients in each simulated datasets.
 #' @param n.simulation The number of simulated datasets.
 #' @param seed The random seed. Default is NULL to use the current seed.
-#' @param std.norm.lb The minimum quantile value of standardized normal value
-#'   when performing quantile transformation of empirical data.
-#' @param std.norm.ub The maximum quantile value of standardized normal value
-#'   when performing quantile transformation of empirical data.
 #' @param validation.type A string to specify the hypothesis test used to detect the difference
 #'   between input data and the simulated data. Default is "none". Possible methods are
 #'   energy distance ("energy"), ball divergence ("ball") and the equability of dependence
@@ -108,8 +104,6 @@ copula.sim <- function(data.input,
                        seed = NULL,
                        validation.type = "none",
                        validation.sig.lvl = 0.05,
-                       std.norm.lb = -3,
-                       std.norm.ub = 3,
                        rmvnorm.matrix.decomp.method = "svd",
                        verbose = TRUE) {
   # check dimensions of data.input/id.vec/arm.vec are all valid.
@@ -162,12 +156,6 @@ copula.sim <- function(data.input,
        !is.numeric(validation.sig.lvl) || !between(validation.sig.lvl, 0, 1)) {
     stop("validation.sig.lvl must be non-NA numeric between 0 and 1.")
   }
-  if ((length(std.norm.lb) > 1) || is.na(std.norm.lb) || !is.numeric(std.norm.lb)) {
-    stop("std.norm.lb must be non-NA numeric.")
-  }
-  if ((length(std.norm.ub) > 1) || is.na(std.norm.ub) || !is.numeric(std.norm.ub)) {
-    stop("rmvnorm.ub must be non-NA numeric.")
-  }
   if (!(rmvnorm.matrix.decomp.method %in% c("eigen", "svd", "chol"))) {
     stop("rmvnorm.matrix.decomp.method must be one of ['eigen', 'svd', 'chol']")
   }
@@ -205,7 +193,7 @@ copula.sim <- function(data.input,
     # add shift values if data.input is integers
     mutate(data.input.transformed = .data$data.input + if_else(.data$data.is.integer, runif(n()) - 1, 0)) %>%
     # quantile transformation: marginal dist CDF^(-1) follow Unif(0,1) with reasonable bounds
-    mutate(data.norm = pmax(pmin(qnorm((rank(.data$data.input) - 0.5)/max(unique(.data$id))), std.norm.ub), std.norm.lb)) %>%
+    mutate(data.norm = qnorm((rank(.data$data.input) - 0.5)/max(unique(.data$id)))) %>%
     ungroup
   # clean up
   rm(data.df)

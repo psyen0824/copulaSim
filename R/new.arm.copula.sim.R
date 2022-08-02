@@ -1,6 +1,6 @@
 #' Simulating new multivariate datasets with shifted mean vector from existing empirical data
 #'
-#' @param data.input,id.vec,arm.vec,n.patient,n.simulation,seed,std.norm.lb,std.norm.ub Please refer to the function \link{copula.sim}.
+#' @param data.input,id.vec,arm.vec,n.patient,n.simulation,seed Please refer to the function \link{copula.sim}.
 #' @param validation.type,validation.sig.lvl,rmvnorm.matrix.decomp.method,verbose Please refer to the function \link{copula.sim}.
 #' @param shift.vec.list A list of numeric vectors to specify the mean-shifted values for new arms.
 #' @return Please refer to the function \link{copula.sim}.
@@ -30,8 +30,6 @@ new.arm.copula.sim <- function(data.input,
                                seed = NULL,
                                validation.type = "none",
                                validation.sig.lvl = 0.05,
-                               std.norm.lb = -3,
-                               std.norm.ub = 3,
                                rmvnorm.matrix.decomp.method = "svd",
                                verbose = TRUE) {
   if (length(unique(arm.vec)) > 1){
@@ -71,8 +69,6 @@ new.arm.copula.sim <- function(data.input,
       seed,
       validation.type,
       validation.sig.lvl,
-      std.norm.lb,
-      std.norm.ub,
       rmvnorm.matrix.decomp.method,
       verbose
     )
@@ -87,8 +83,6 @@ new.arm.copula.sim <- function(data.input,
           seed,
           validation.type,
           validation.sig.lvl,
-          std.norm.lb,
-          std.norm.ub,
           rmvnorm.matrix.decomp.method,
           verbose
         )$data.simul

@@ -13,8 +13,6 @@ copula.sim(
   seed = NULL,
   validation.type = "none",
   validation.sig.lvl = 0.05,
-  std.norm.lb = -3,
-  std.norm.ub = 3,
   rmvnorm.matrix.decomp.method = "svd",
   verbose = TRUE
 )
@@ -38,12 +36,6 @@ energy distance ("energy"), ball divergence ("ball") and the equability of depen
 ("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.}
 
 \item{validation.sig.lvl}{The significant level (alpha) value for the hypothesis test.}
-
-\item{std.norm.lb}{The minimum quantile value of standardized normal value
-when performing quantile transformation of empirical data.}
-
-\item{std.norm.ub}{The maximum quantile value of standardized normal value
-when performing quantile transformation of empirical data.}
 
 \item{rmvnorm.matrix.decomp.method}{The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".}
 
