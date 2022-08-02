@@ -20,6 +20,8 @@ When simulating small empirical data, the underlying marginal distributions and 
 We use the copula invariance property, which can generate the joint distribution without making a strong parametric assumption. The copulaSim package is an R package that performs virtual patient simulation based on copula invariance property. To share this finding with the community, we have implemented the copula algorithm into a new R package entitled copulaSim. Below is the demonstration about how to use this package to generate the simulated data.
 
 ## Copula Simulation Algorithm 
+![](https://imgur.com/a/gOH3oG8)
+
 ![](https://bit.ly/3lfNVG6)
 
 ## Generate Empirical Data 
