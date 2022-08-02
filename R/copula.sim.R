@@ -78,7 +78,7 @@ data.diff.test <- function(x, y, test.method) {
 #' @importFrom magrittr set_colnames
 #' @importFrom stats pnorm qnorm runif cov
 #' @importFrom tibble tibble as_tibble
-#' @importFrom dplyr between percent_rank bind_rows group_split if_else left_join
+#' @importFrom dplyr between bind_rows group_split if_else left_join
 #' @importFrom dplyr select ungroup arrange group_by summarise filter mutate n
 #' @importFrom mvtnorm rmvnorm
 #' @references Sklar, A. (1959). Functions de repartition an dimensionset leursmarges., Paris: PublInst Stat.
@@ -205,7 +205,7 @@ copula.sim <- function(data.input,
     # add shift values if data.input is integers
     mutate(data.input.transformed = .data$data.input + if_else(.data$data.is.integer, runif(n()) - 1, 0)) %>%
     # quantile transformation: marginal dist CDF^(-1) follow Unif(0,1) with reasonable bounds
-    mutate(data.norm = pmax(pmin(qnorm(percent_rank(.data$data.input)), std.norm.ub), std.norm.lb)) %>%
+    mutate(data.norm = pmax(pmin(qnorm((rank(.data$data.input) - 0.5)/max(unique(.data$id))), std.norm.ub), std.norm.lb)) %>%
     ungroup
   # clean up
   rm(data.df)
