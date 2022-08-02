@@ -24,7 +24,7 @@ copula.sim(
 
 \item{arm.vec}{The column to identify the arm in clinical trial.}
 
-\item{n.patient}{The targeted number of patients in each simulated datasets.}
+\item{n.patient}{The targeted number of patients in each simulated dataset.}
 
 \item{n.simulation}{The number of simulated datasets.}
 
@@ -42,9 +42,10 @@ energy distance ("energy"), ball divergence ("ball") and the equability of depen
 \item{verbose}{A logical value to specify whether to print message for simulation process or not.}
 }
 \value{
-A copula.sim object with three elements.
+A copula.sim object with four elements.
 \enumerate{
-\item data.input: empirical data
+\item data.input: empirical data (wide-form)
+\item data.input.long: empirical data (long-form)
 \item data.transform: quantile transformation of data.input
 \item data.simul: simulated data
 }

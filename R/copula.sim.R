@@ -55,7 +55,7 @@ data.diff.test <- function(x, y, test.method) {
 #' @param data.input The empirical patient-level data to be used to simulate new virtual patient data.
 #' @param id.vec The ID for individual patient in the input data.
 #' @param arm.vec The column to identify the arm in clinical trial.
-#' @param n.patient The targeted number of patients in each simulated datasets.
+#' @param n.patient The targeted number of patients in each simulated dataset.
 #' @param n.simulation The number of simulated datasets.
 #' @param seed The random seed. Default is NULL to use the current seed.
 #' @param validation.type A string to specify the hypothesis test used to detect the difference
@@ -66,10 +66,11 @@ data.diff.test <- function(x, y, test.method) {
 #' @param validation.sig.lvl The significant level (alpha) value for the hypothesis test.
 #' @param rmvnorm.matrix.decomp.method The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".
 #' @param verbose A logical value to specify whether to print message for simulation process or not.
-#' @return A copula.sim object with three elements.
-#'   1. data.input: empirical data
-#'   2. data.transform: quantile transformation of data.input
-#'   3. data.simul: simulated data
+#' @return A copula.sim object with four elements.
+#'   1. data.input: empirical data (wide-form)
+#'   2. data.input.long: empirical data (long-form)
+#'   3. data.transform: quantile transformation of data.input
+#'   4. data.simul: simulated data
 #' @export
 #' @importFrom magrittr set_colnames
 #' @importFrom stats pnorm qnorm runif cov
@@ -193,10 +194,9 @@ copula.sim <- function(data.input,
     # add shift values if data.input is integers
     mutate(data.input.transformed = .data$data.input + if_else(.data$data.is.integer, runif(n()) - 1, 0)) %>%
     # quantile transformation: marginal dist CDF^(-1) follow Unif(0,1) with reasonable bounds
-    mutate(data.norm = qnorm((rank(.data$data.input) - 0.5)/max(unique(.data$id)))) %>%
+    mutate(data.unif = (rank(.data$data.input) - 0.5) / max(unique(.data$id)),
+           data.norm = qnorm((rank(.data$data.input) - 0.5) / max(unique(.data$id)))) %>%
     ungroup
-  # clean up
-  rm(data.df)
 
   # get mean vectors and covariance matrices
   data.split.arm <- data.transform %>%
@@ -271,6 +271,7 @@ copula.sim <- function(data.input,
   # make a object
   res <- list(
     data.input = data.input,
+    data.input.long = data.df,
     data.transform = data.transform,
     data.simul = data.simul
   )
