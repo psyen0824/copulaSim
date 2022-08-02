@@ -1,0 +1,167 @@
+---
+title: "Introduction to R package copulaSim"
+author: "Pei-Shan Yen"
+date: "2022-08-02"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to copulaSim}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Virtual Patient Simulaiton
+
+To optimize clinical trial designs and data analysis methods consistently through trial simulation, we need to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. To make the outcome of optimization more realistic, relevant empirical patient level data should be utilized when it’s available. 
+
+## The Challenges Faced While Similating Small Data
+When simulating small empirical data, the underlying marginal distributions and their dependence structure cannot be understood or verified thoroughly due to the limited sample size. 
+
+## Solution: Copula Invariance Property 
+We use the copula invariance property, which can generate the joint distribution without making a strong parametric assumption. The copulaSim package is an R package that performs virtual patient simulation based on copula invariance property. To share this finding with the community, we have implemented the copula algorithm into a new R package entitled copulaSim. Below is the demonstration about how to use this package to generate the simulated data.
+
+## Copula Simulation Algorithm 
+![](https://bit.ly/3lfNVG6)
+
+## Generate Empirical Data 
+### Assume the 1-arm and 5-dimensional empirical data follows multivariate normal data. The sample size of empirical data is 30.
+
+```{r, message=FALSE, warning=FALSE}
+library(mvtnorm)
+arm1 <- rmvnorm(n = 30, mean  = rep(10, 5), sigma = diag(5) + 0.5)
+test_data <- as.data.frame(cbind(1:30, rep(1, 30), arm1))
+colnames(test_data) <- c("id","arm",paste0("time_", 1:5))
+knitr::kable((test_data), "simple")
+```
+
+
+## Load Package copulaSim
+
+```{r, message=FALSE, warning=FALSE}
+library(copulaSim)
+```
+
+
+## Use function *copula.sim* to generate ONE simulated dataset for the emperical data
+
++-----------------+-----------------------------------------------------------+--------------------+
+| Argument        | Definition                                                | Assigned Value     |
++=================+===========================================================+====================+
+| data.input      | The empirical data                                        | test_data[,-c(1,2)]|
++-----------------+-----------------------------------------------------------+--------------------+
+| id.vec          | ID fo individual patient in the input data                | test_data$id       |
++-----------------+-----------------------------------------------------------+--------------------+
+| arm.vec         | The column to identify the arm in clinical trial          | test_data$arm      |
++-----------------+-----------------------------------------------------------+--------------------+
+| n.patient       | The targeted number of patients in each simulated dataset | 50                 |
++-----------------+-----------------------------------------------------------+--------------------+
+| n.simulation    | The number of simulated datasets                          | 1                  |
++-----------------+-----------------------------------------------------------+--------------------+
+| seed            | The random seed to reproduce the simulation study         | 2022               |
++-----------------+-----------------------------------------------------------+--------------------+
+| validation.type | Specify hypothesis test to detect the difference between  | "energy"           |
+|                 | empirical data and simulated data                         |                    |
++-----------------+-----------------------------------------------------------+--------------------+
+| verbose         | Whether to print message for simulation process or not    | TRUE               |
++-----------------+-----------------------------------------------------------+--------------------+
+
+- To avoid extreme sampling results, please use "energy" or "ball" in the argument *validation.type* for the purpose of data validation. Doing this could guarantee the similarity between empirical data and the simulated data based on a 2-sample test.
+
+- From the 2-sample test result, the joint distribution of the simulated data is not significantly different from the empirical data.
+
+```{r, message=FALSE, warning=FALSE}
+## Generate 1 simulated dataset
+simu_S1 <- copula.sim(data.input = test_data[,-c(1,2)], 
+                      id.vec = test_data$id, 
+                      arm.vec = test_data$arm,
+                      n.patient = 50 , 
+                      n.simulation = 1, 
+                      seed = 2022, 
+                      validation.type = "energy",
+                      verbose = TRUE)
+## Obtain the simulated long-form dataset
+simu_S1$data.simul
+```
+
+- Also, from the marginal density plot, the copula simulated data is close to the empirical data. 
+
+```{r, message=FALSE, warning=FALSE, fig.dim = c(8, 3)}
+library(dplyr)
+## Obtain the empirical long-form dataset
+empir <- simu_S1$data.input.long %>% mutate(cate = "empirical_n30") %>% rename(data = data.input)
+
+## Produce the marginal density plot
+simul <- simu_S1$data.simul %>%  mutate(cate = "copulaSim_n50") %>% 
+         rename(data = data.sim) %>% select(-sim.id)  
+library(ggplot2)
+rbind(empir, simul) %>% filter(grepl('time', col.name)) %>%
+  ggplot(aes(x = data, color = cate, fill = cate)) +
+  facet_wrap(.~col.name, ncol = 5) +
+  geom_density(alpha = 0.001, size = 1)
+```
+
+
+## Use function *extract.data.sim* to convert simulated data in a list of wide-form matrices
+
+```{r, message=FALSE, warning=FALSE}
+## Converting the long-form simulated dataset to wide-form 
+simu.wide <- extract.data.sim(simu_S1)
+simu.wide
+```
+
+## Use function *compare.copula.sim* to perform the comparison between empirical data and multiple simulated datasets.
+
+- To increase the data variability, we suggetst that turn off the data validation option, i.e.,  *validation.type = "none"*. 
+
+```{r, message=FALSE, warning=FALSE}
+## Generate 100 simulated dataset
+simu_S100 <- copula.sim(data.input = test_data[,-c(1,2)], 
+                         id.vec = test_data$id, 
+                         arm.vec = test_data$arm,
+                         n.patient = 50 , 
+                         n.simulation = 100, 
+                         seed = 2022, 
+                         validation.type = "none",
+                         verbose = FALSE)
+## Compare the marginal mean via the function compare.copula.sim 
+compare <- compare.copula.sim(simu_S100)
+knitr::kable(compare$mean.comparison, "simple")
+```
+
+## Use function *new.arm.copula.sim* to simulate new multivariate datasets with shifted mean vector from existing empirical data
+
+- Assume the dependence structure of the new-arm data is as the same as the empirical data.
+
+```{r, message=FALSE, warning=FALSE}
+## Generate Empirical Data 
+## Assume the 1-arm and 3-dimensional empirical data follows multivariate normal data.
+arm1 <- rmvnorm(n = 80, mean  = c(10,10.5,11), sigma = diag(3))
+test_data2 <- as.data.frame(cbind(1:80, rep(1,80), arm1))
+colnames(test_data2) <- c("id", "arm", paste0("var_", 1:3))
+
+## Generate 1 simulated datasets with one empirical arm and two new-arm
+## The mean difference from empirical arm and the 1st new arm is 2.5, 2.55, and 2.6 at each time point
+## The mean difference from empirical arm and the 2nd new arm is 4.5, 4.55, and 4.6 at each time point
+
+newARM <- new.arm.copula.sim(data.input = test_data2[,-c(1,2)], 
+                             id.vec = test_data2$id,
+                             arm.vec = test_data2$arm, 
+                             n.patient = 100 , 
+                             n.simulation = 1, 
+                             seed = 2022,
+                             shift.vec.list = list(c(2.5,2.55,2.6), c(4.5,4.55,4.6)),
+                             verbose = FALSE)
+
+## Obtain the simulated long-form dataset
+newARM$data.simul
+
+## Verify the mean difference
+newARM$data.simul %>%  
+  group_by(.data$arm, .data$col.num) %>%
+  summarise(N = n(), Mean = mean(.data$data.sim), SD = sd(.data$data.sim))
+```
+
+
+--------------------
+- Authored by Pei-Shan Yen
+- CRAN page: https://cran.r-project.org/package=copulaSim
+- github page: https://github.com/psyen0824/ColpulaSim
