@@ -11,7 +11,7 @@ vignette: >
 
 ## What is the usage of the R package *copulaSim*?
 
-This package serves to simulate the joint distribution of empirical patient-level data based on the copula invariance property.
+This package serves to simulate jointly distributed patient-level data from historical data based on the copula invariance property.
 
 
 ## Why do we need to perform virtual patient simulation?
