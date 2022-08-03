@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0095)file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html -->
+<!-- saved from url=(0095)file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
@@ -274,11 +274,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Generate empirical data:</h2>
 <div id="assume-that-the-single-arm-5-dimensional-empirical-data-follows-multivariate-normal-data-and-let-the-sample-size-of-empirical-data-be-30." class="section level3">
 <h3>Assume that the single-arm, 5-dimensional empirical data follows multivariate normal data, and let the sample size of empirical data be 30.</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
-<span id="cb1-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>arm1 <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean  =</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="at">sigma =</span> <span class="fu">diag</span>(<span class="dv">5</span>) <span class="sc">+</span> <span class="fl">0.5</span>)</span>
-<span id="cb1-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">30</span>), arm1))</span>
-<span id="cb1-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(test_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>,<span class="st">"arm"</span>,<span class="fu">paste0</span>(<span class="st">"time_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb1-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb1-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>((test_data), <span class="st">"simple"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mvtnorm)</span>
+<span id="cb1-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>arm1 <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">mean  =</span> <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="at">sigma =</span> <span class="fu">diag</span>(<span class="dv">5</span>) <span class="sc">+</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">30</span>), arm1))</span>
+<span id="cb1-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(test_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>,<span class="st">"arm"</span>,<span class="fu">paste0</span>(<span class="st">"time_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb1-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb1-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>((test_data), <span class="st">"simple"</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -295,272 +295,272 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">1</td>
-<td align="right">12.320585</td>
-<td align="right">10.284647</td>
-<td align="right">9.113227</td>
-<td align="right">10.235173</td>
-<td align="right">10.826249</td>
+<td align="right">11.421163</td>
+<td align="right">10.026554</td>
+<td align="right">11.058890</td>
+<td align="right">8.900606</td>
+<td align="right">8.760443</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
 <td align="right">1</td>
-<td align="right">9.557543</td>
-<td align="right">9.343811</td>
-<td align="right">8.809031</td>
-<td align="right">10.563760</td>
-<td align="right">11.414152</td>
+<td align="right">8.279552</td>
+<td align="right">9.360192</td>
+<td align="right">10.268357</td>
+<td align="right">10.717294</td>
+<td align="right">7.921394</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
 <td align="right">1</td>
-<td align="right">9.453788</td>
-<td align="right">10.076390</td>
-<td align="right">9.081882</td>
-<td align="right">11.890513</td>
-<td align="right">8.809907</td>
+<td align="right">10.618836</td>
+<td align="right">10.243387</td>
+<td align="right">11.170399</td>
+<td align="right">10.029001</td>
+<td align="right">10.107592</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
 <td align="right">1</td>
-<td align="right">10.528318</td>
-<td align="right">10.499293</td>
-<td align="right">9.367005</td>
-<td align="right">9.061630</td>
-<td align="right">7.449782</td>
+<td align="right">8.857224</td>
+<td align="right">8.927633</td>
+<td align="right">9.912918</td>
+<td align="right">9.186934</td>
+<td align="right">8.421445</td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="right">1</td>
-<td align="right">10.302261</td>
-<td align="right">8.277658</td>
-<td align="right">10.725438</td>
-<td align="right">9.549336</td>
-<td align="right">9.783195</td>
+<td align="right">10.427668</td>
+<td align="right">8.689960</td>
+<td align="right">10.088711</td>
+<td align="right">11.065428</td>
+<td align="right">10.287744</td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="right">1</td>
-<td align="right">9.306488</td>
-<td align="right">8.353305</td>
-<td align="right">8.629150</td>
-<td align="right">8.250503</td>
-<td align="right">8.127253</td>
+<td align="right">9.954967</td>
+<td align="right">10.773893</td>
+<td align="right">10.558790</td>
+<td align="right">10.554875</td>
+<td align="right">9.809333</td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="right">1</td>
-<td align="right">8.683120</td>
-<td align="right">10.049812</td>
-<td align="right">7.935233</td>
-<td align="right">8.879983</td>
-<td align="right">7.872395</td>
+<td align="right">7.915490</td>
+<td align="right">10.552570</td>
+<td align="right">9.553229</td>
+<td align="right">9.211666</td>
+<td align="right">9.395752</td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
 <td align="right">1</td>
-<td align="right">9.985828</td>
-<td align="right">10.006082</td>
-<td align="right">8.961279</td>
-<td align="right">9.420196</td>
-<td align="right">11.318852</td>
+<td align="right">10.967929</td>
+<td align="right">11.776368</td>
+<td align="right">9.473774</td>
+<td align="right">11.397247</td>
+<td align="right">11.926853</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
 <td align="right">1</td>
-<td align="right">9.545771</td>
-<td align="right">10.261671</td>
-<td align="right">10.845419</td>
-<td align="right">10.534732</td>
-<td align="right">10.873275</td>
+<td align="right">10.479772</td>
+<td align="right">9.140299</td>
+<td align="right">10.285236</td>
+<td align="right">9.539787</td>
+<td align="right">11.221492</td>
 </tr>
 <tr class="even">
 <td align="right">10</td>
 <td align="right">1</td>
-<td align="right">10.548181</td>
-<td align="right">11.708918</td>
-<td align="right">12.115202</td>
-<td align="right">10.598782</td>
-<td align="right">11.725070</td>
+<td align="right">11.181982</td>
+<td align="right">11.437231</td>
+<td align="right">10.896544</td>
+<td align="right">10.444013</td>
+<td align="right">10.973037</td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
 <td align="right">1</td>
-<td align="right">9.831852</td>
-<td align="right">11.413216</td>
-<td align="right">9.691519</td>
-<td align="right">9.391376</td>
-<td align="right">8.910928</td>
+<td align="right">10.342182</td>
+<td align="right">12.419568</td>
+<td align="right">11.773647</td>
+<td align="right">10.233000</td>
+<td align="right">11.777801</td>
 </tr>
 <tr class="even">
 <td align="right">12</td>
 <td align="right">1</td>
-<td align="right">8.552034</td>
-<td align="right">9.787772</td>
-<td align="right">8.780100</td>
-<td align="right">10.838110</td>
-<td align="right">9.859150</td>
+<td align="right">9.032199</td>
+<td align="right">10.159748</td>
+<td align="right">8.744433</td>
+<td align="right">8.758924</td>
+<td align="right">10.058231</td>
 </tr>
 <tr class="odd">
 <td align="right">13</td>
 <td align="right">1</td>
-<td align="right">9.690952</td>
-<td align="right">10.000674</td>
-<td align="right">8.355134</td>
-<td align="right">8.373716</td>
-<td align="right">11.121866</td>
+<td align="right">9.318266</td>
+<td align="right">11.101373</td>
+<td align="right">9.390603</td>
+<td align="right">10.386743</td>
+<td align="right">9.129460</td>
 </tr>
 <tr class="even">
 <td align="right">14</td>
 <td align="right">1</td>
-<td align="right">10.550576</td>
-<td align="right">6.834474</td>
-<td align="right">10.366201</td>
-<td align="right">8.505698</td>
-<td align="right">10.925205</td>
+<td align="right">11.245096</td>
+<td align="right">9.802974</td>
+<td align="right">8.745818</td>
+<td align="right">9.130894</td>
+<td align="right">7.333439</td>
 </tr>
 <tr class="odd">
 <td align="right">15</td>
 <td align="right">1</td>
-<td align="right">10.863876</td>
-<td align="right">11.500400</td>
-<td align="right">10.501664</td>
-<td align="right">11.340238</td>
-<td align="right">9.090747</td>
+<td align="right">11.929644</td>
+<td align="right">10.716671</td>
+<td align="right">9.862399</td>
+<td align="right">10.528851</td>
+<td align="right">10.552719</td>
 </tr>
 <tr class="even">
 <td align="right">16</td>
 <td align="right">1</td>
-<td align="right">11.499311</td>
-<td align="right">11.430318</td>
-<td align="right">9.411951</td>
-<td align="right">9.930326</td>
-<td align="right">10.153777</td>
+<td align="right">10.085326</td>
+<td align="right">9.447190</td>
+<td align="right">10.474119</td>
+<td align="right">11.200885</td>
+<td align="right">8.419780</td>
 </tr>
 <tr class="odd">
 <td align="right">17</td>
 <td align="right">1</td>
-<td align="right">11.597141</td>
-<td align="right">10.841389</td>
-<td align="right">10.832360</td>
-<td align="right">9.868540</td>
-<td align="right">10.423710</td>
+<td align="right">9.513670</td>
+<td align="right">8.891845</td>
+<td align="right">11.589608</td>
+<td align="right">6.938631</td>
+<td align="right">9.264718</td>
 </tr>
 <tr class="even">
 <td align="right">18</td>
 <td align="right">1</td>
-<td align="right">9.614338</td>
-<td align="right">9.854973</td>
-<td align="right">10.750761</td>
-<td align="right">10.970450</td>
-<td align="right">11.136466</td>
+<td align="right">8.241748</td>
+<td align="right">8.737874</td>
+<td align="right">10.634304</td>
+<td align="right">10.512814</td>
+<td align="right">11.956753</td>
 </tr>
 <tr class="odd">
 <td align="right">19</td>
 <td align="right">1</td>
-<td align="right">11.836668</td>
-<td align="right">9.039783</td>
-<td align="right">10.503858</td>
-<td align="right">10.536616</td>
-<td align="right">11.949017</td>
+<td align="right">9.747734</td>
+<td align="right">7.370455</td>
+<td align="right">7.575603</td>
+<td align="right">7.027001</td>
+<td align="right">8.926213</td>
 </tr>
 <tr class="even">
 <td align="right">20</td>
 <td align="right">1</td>
-<td align="right">9.460519</td>
-<td align="right">10.952317</td>
-<td align="right">10.216457</td>
-<td align="right">9.587744</td>
-<td align="right">11.557502</td>
+<td align="right">8.930493</td>
+<td align="right">7.659820</td>
+<td align="right">9.391817</td>
+<td align="right">9.051112</td>
+<td align="right">9.659784</td>
 </tr>
 <tr class="odd">
 <td align="right">21</td>
 <td align="right">1</td>
-<td align="right">9.209965</td>
-<td align="right">9.111604</td>
-<td align="right">10.875703</td>
-<td align="right">13.730413</td>
-<td align="right">11.998781</td>
+<td align="right">10.485950</td>
+<td align="right">10.130358</td>
+<td align="right">10.347324</td>
+<td align="right">7.728159</td>
+<td align="right">10.324472</td>
 </tr>
 <tr class="even">
 <td align="right">22</td>
 <td align="right">1</td>
-<td align="right">11.547816</td>
-<td align="right">7.226357</td>
-<td align="right">9.839892</td>
-<td align="right">10.369683</td>
-<td align="right">8.868298</td>
+<td align="right">11.091271</td>
+<td align="right">9.177173</td>
+<td align="right">9.982710</td>
+<td align="right">12.505626</td>
+<td align="right">11.693095</td>
 </tr>
 <tr class="odd">
 <td align="right">23</td>
 <td align="right">1</td>
-<td align="right">10.505109</td>
-<td align="right">8.785177</td>
-<td align="right">7.519114</td>
-<td align="right">7.665226</td>
-<td align="right">8.751709</td>
+<td align="right">11.300844</td>
+<td align="right">8.925510</td>
+<td align="right">10.311869</td>
+<td align="right">9.631376</td>
+<td align="right">7.654900</td>
 </tr>
 <tr class="even">
 <td align="right">24</td>
 <td align="right">1</td>
-<td align="right">11.838952</td>
-<td align="right">9.984453</td>
-<td align="right">12.661492</td>
-<td align="right">11.270876</td>
-<td align="right">12.600408</td>
+<td align="right">10.214246</td>
+<td align="right">9.175757</td>
+<td align="right">11.131651</td>
+<td align="right">10.348139</td>
+<td align="right">8.226805</td>
 </tr>
 <tr class="odd">
 <td align="right">25</td>
 <td align="right">1</td>
-<td align="right">10.985271</td>
-<td align="right">11.803774</td>
-<td align="right">7.913326</td>
-<td align="right">9.909250</td>
-<td align="right">9.629158</td>
+<td align="right">8.829693</td>
+<td align="right">10.737689</td>
+<td align="right">8.745872</td>
+<td align="right">11.866048</td>
+<td align="right">9.041436</td>
 </tr>
 <tr class="even">
 <td align="right">26</td>
 <td align="right">1</td>
-<td align="right">9.606991</td>
-<td align="right">9.141537</td>
-<td align="right">8.462241</td>
-<td align="right">9.697072</td>
-<td align="right">8.902783</td>
+<td align="right">9.491440</td>
+<td align="right">12.006997</td>
+<td align="right">10.353143</td>
+<td align="right">10.903088</td>
+<td align="right">9.265430</td>
 </tr>
 <tr class="odd">
 <td align="right">27</td>
 <td align="right">1</td>
-<td align="right">9.760419</td>
-<td align="right">8.078014</td>
-<td align="right">7.362273</td>
-<td align="right">8.730339</td>
-<td align="right">8.875044</td>
+<td align="right">11.205594</td>
+<td align="right">10.319294</td>
+<td align="right">10.879938</td>
+<td align="right">10.112069</td>
+<td align="right">10.880160</td>
 </tr>
 <tr class="even">
 <td align="right">28</td>
 <td align="right">1</td>
-<td align="right">9.221115</td>
-<td align="right">8.339890</td>
-<td align="right">9.905845</td>
-<td align="right">9.908354</td>
-<td align="right">10.837621</td>
+<td align="right">12.839276</td>
+<td align="right">9.904822</td>
+<td align="right">11.431330</td>
+<td align="right">10.397683</td>
+<td align="right">9.315857</td>
 </tr>
 <tr class="odd">
 <td align="right">29</td>
 <td align="right">1</td>
-<td align="right">11.836333</td>
-<td align="right">8.861331</td>
-<td align="right">10.830861</td>
-<td align="right">10.268295</td>
-<td align="right">10.091413</td>
+<td align="right">8.691492</td>
+<td align="right">8.563826</td>
+<td align="right">8.439415</td>
+<td align="right">9.760409</td>
+<td align="right">7.811144</td>
 </tr>
 <tr class="even">
 <td align="right">30</td>
 <td align="right">1</td>
-<td align="right">9.852281</td>
-<td align="right">9.410576</td>
-<td align="right">10.981223</td>
-<td align="right">10.519612</td>
-<td align="right">10.000253</td>
+<td align="right">9.739949</td>
+<td align="right">10.885439</td>
+<td align="right">9.861217</td>
+<td align="right">11.552870</td>
+<td align="right">8.893149</td>
 </tr>
 </tbody>
 </table>
@@ -568,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="load-package-copulasim" class="section level2">
 <h2>Load package copulaSim</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(copulaSim)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(copulaSim)</span></code></pre></div>
 </div>
 <div id="use-function-copula.sim-to-generate-one-simulated-dataset-for-the-emperical-data" class="section level2">
 <h2>Use function <em>copula.sim</em> to generate ONE simulated dataset for the emperical data</h2>
@@ -632,122 +632,129 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>As a means of avoiding extreme sampling results when performing one simulated dataset, it is advised to use “energy” or “ball” in the argument <em>validation.type</em>. The purpose of doing this is to perform data validation, which ensures the similarity between empirical data and the simulated data based on 2-sample test.</p></li>
 <li><p>Below shows the 2-sample test result, which indicates that the joint distribution of the simulated data is not significantly different from the empirical data.</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 1 simulated dataset</span></span>
-<span id="cb3-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-2" aria-hidden="true" tabindex="-1"></a>simu_S1 <span class="ot">&lt;-</span> <span class="fu">copula.sim</span>(<span class="at">data.input =</span> test_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
-<span id="cb3-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">id.vec =</span> test_data<span class="sc">$</span>id, </span>
-<span id="cb3-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">arm.vec =</span> test_data<span class="sc">$</span>arm,</span>
-<span id="cb3-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n.patient =</span> <span class="dv">50</span> , </span>
-<span id="cb3-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n.simulation =</span> <span class="dv">1</span>, </span>
-<span id="cb3-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">seed =</span> <span class="dv">2022</span>, </span>
-<span id="cb3-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">validation.type =</span> <span class="st">"energy"</span>,</span>
-<span id="cb3-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb3-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 1 simulated dataset</span></span>
+<span id="cb3-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-2" aria-hidden="true" tabindex="-1"></a>simu_S1 <span class="ot">&lt;-</span> <span class="fu">copula.sim</span>(<span class="at">data.input =</span> test_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
+<span id="cb3-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">id.vec =</span> test_data<span class="sc">$</span>id, </span>
+<span id="cb3-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">arm.vec =</span> test_data<span class="sc">$</span>arm,</span>
+<span id="cb3-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n.patient =</span> <span class="dv">50</span> , </span>
+<span id="cb3-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n.simulation =</span> <span class="dv">1</span>, </span>
+<span id="cb3-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">seed =</span> <span class="dv">2022</span>, </span>
+<span id="cb3-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">validation.type =</span> <span class="st">"energy"</span>,</span>
+<span id="cb3-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb3-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Simulate 1th Dataset
-## p.value for energy test: 0.8890
-## Compelete simulating 1th Dataset in 0.300 seconds</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the simulated long-form dataset</span></span>
-<span id="cb5-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(simu_S1<span class="sc">$</span>data.simul)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 6
-##      id   arm col.num col.name data.sim sim.id
-##   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;
-## 1     1     1       1 time_1      10.1       1
-## 2     2     1       1 time_1       9.46      1
-## 3     3     1       1 time_1      11.0       1
-## 4     4     1       1 time_1      11.6       1
-## 5     5     1       1 time_1       9.57      1
-## 6     6     1       1 time_1       9.69      1</code></pre>
+## p.value for energy test: 0.7550
+## Compelete simulating 1th Dataset in 0.170 seconds</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the simulated long-form dataset</span></span>
+<span id="cb5-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb5-2" aria-hidden="true" tabindex="-1"></a>simu_S1<span class="sc">$</span>data.simul</span></code></pre></div>
+<pre><code>## # A tibble: 250 x 6
+##       id   arm col.num col.name data.sim sim.id
+##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;
+##  1     1     1       1 time_1      10.3       1
+##  2     2     1       1 time_1       9.02      1
+##  3     3     1       1 time_1      11.2       1
+##  4     4     1       1 time_1      11.2       1
+##  5     5     1       1 time_1       9.29      1
+##  6     6     1       1 time_1       9.51      1
+##  7     7     1       1 time_1      11.2       1
+##  8     8     1       1 time_1      10.4       1
+##  9     9     1       1 time_1       8.60      1
+## 10    10     1       1 time_1       9.49      1
+## # ... with 240 more rows
+## # i Use `print(n = ...)` to see more rows</code></pre>
 <ul>
 <li>Also, from the marginal density plot, we can see that the copula simulated data is close to the empirical data.</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb7-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the empirical long-form dataset</span></span>
-<span id="cb7-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-3" aria-hidden="true" tabindex="-1"></a>empir <span class="ot">&lt;-</span> simu_S1<span class="sc">$</span>data.input.long <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cate =</span> <span class="st">"empirical_n30"</span>) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">data =</span> data.input)</span>
-<span id="cb7-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Produce the marginal density plot</span></span>
-<span id="cb7-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-6" aria-hidden="true" tabindex="-1"></a>simul <span class="ot">&lt;-</span> simu_S1<span class="sc">$</span>data.simul <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="at">cate =</span> <span class="st">"copulaSim_n50"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rename</span>(<span class="at">data =</span> data.sim) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>sim.id)  </span>
-<span id="cb7-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(empir, simul) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">'time'</span>, col.name)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> data, <span class="at">color =</span> cate, <span class="at">fill =</span> cate)) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>col.name, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb7-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.001</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="data:image/png;base64,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"><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the empirical long-form dataset</span></span>
+<span id="cb7-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-3" aria-hidden="true" tabindex="-1"></a>empir <span class="ot">&lt;-</span> simu_S1<span class="sc">$</span>data.input.long <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cate =</span> <span class="st">"empirical_n30"</span>) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">data =</span> data.input)</span>
+<span id="cb7-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Produce the marginal density plot</span></span>
+<span id="cb7-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-6" aria-hidden="true" tabindex="-1"></a>simul <span class="ot">&lt;-</span> simu_S1<span class="sc">$</span>data.simul <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="at">cate =</span> <span class="st">"copulaSim_n50"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rename</span>(<span class="at">data =</span> data.sim) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>sim.id)  </span>
+<span id="cb7-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(empir, simul) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">'time'</span>, col.name)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> data, <span class="at">color =</span> cate, <span class="at">fill =</span> cate)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>col.name, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.001</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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"><!-- --></p>
 </div>
 <div id="use-function-extract.data.sim-to-convert-simulated-data-into-a-list-of-wide-form-matrices" class="section level2">
 <h2>Use function <em>extract.data.sim</em> to convert simulated data into a list of wide-form matrices</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Converting the long-form simulated dataset to wide-form </span></span>
-<span id="cb8-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb8-2" aria-hidden="true" tabindex="-1"></a>simu.wide <span class="ot">&lt;-</span> <span class="fu">extract.data.sim</span>(simu_S1)</span>
-<span id="cb8-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb8-3" aria-hidden="true" tabindex="-1"></a>simu.wide</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Converting the long-form simulated dataset to wide-form </span></span>
+<span id="cb8-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb8-2" aria-hidden="true" tabindex="-1"></a>simu.wide <span class="ot">&lt;-</span> <span class="fu">extract.data.sim</span>(simu_S1)</span>
+<span id="cb8-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb8-3" aria-hidden="true" tabindex="-1"></a>simu.wide</span></code></pre></div>
 <pre><code>## $`sim.id=1`
 ## $`sim.id=1`$`arm=1`
 ##          time_1    time_2    time_3    time_4    time_5
-##  [1,] 10.113537 11.427888 12.223884 12.762245 11.956439
-##  [2,]  9.456131 11.632041  9.660803  8.971003  7.695985
-##  [3,] 11.020431 11.682540 12.409547 13.678132 11.468718
-##  [4,] 11.594355 10.039458 10.869043 10.521067 12.557095
-##  [5,]  9.565509  7.201732 10.763513 10.382219 11.126658
-##  [6,]  9.690160  8.294390  9.083669  9.927769 11.255864
-##  [7,] 11.681744 10.747943  9.904958 10.522000 11.637656
-##  [8,] 10.529334  8.341698  7.499728  8.633004  8.933457
-##  [9,]  9.212395 10.034170  9.762075 10.576991  8.893515
-## [10,]  9.666096 10.275216  8.417509  9.533466 11.036783
-## [11,]  9.884442  7.134248 10.844685  8.809269 11.983177
-## [12,] 11.557774  9.647393  8.579082  7.920419  7.891419
-## [13,]  9.849207 10.042492 10.503471  8.854555 10.019649
-## [14,] 11.838770 10.263347 12.249807 11.294077 11.536359
-## [15,] 10.821128 10.046203  8.172533  8.252784 10.723028
-## [16,]  9.837064  8.142159  7.929341  8.392454 10.123896
-## [17,]  9.384625  8.244556  7.493387  8.192667  7.543024
-## [18,]  9.456927  7.097597  7.805008  8.006094  7.576187
-## [19,] 11.643865  7.826386 10.846979  8.656623  9.907792
-## [20,]  9.220322  9.624161  8.336176  8.341895  8.182880
-## [21,] 10.514015  9.303317 10.424161 10.914811 11.588009
-## [22,]  8.619589  8.285620  9.635887 10.815831  9.686950
-## [23,]  9.549934 10.021533 10.841116 10.893811 10.650624
-## [24,] 10.760450 11.465453  8.798471  9.681078  8.901008
-## [25,]  9.459091 10.000879 10.845200 10.446184 11.060059
-## [26,] 10.276535  9.257172  7.457707  8.407797  9.388468
-## [27,] 10.387680 10.073150  7.508191  8.637302  8.860625
-## [28,] 10.382492  9.111867 10.747643 11.274668 11.591606
-## [29,] 10.852331  9.011839 10.832948 10.944810 11.605331
-## [30,]  8.680127  9.635908 10.725907 11.462797  9.781822
-## [31,] 11.586830 11.145889 10.824321  9.908789  8.838302
-## [32,] 10.510975 11.450596  8.106105  9.416833  8.906299
-## [33,] 11.503885  8.342459  8.977498  9.406279 10.827173
-## [34,]  9.628157 10.071118 10.728022 10.587577 11.948948
-## [35,]  9.557374  9.115899 12.521682 11.303787 11.542596
-## [36,] 11.837585  8.318580  9.811588  8.739263 10.842619
-## [37,] 10.836555  8.064321  9.809569  8.831062  8.898029
-## [38,]  9.384230  8.348688 10.343617 10.037654 11.861002
-## [39,] 10.934296  9.810870 10.097511  8.753752 10.898345
-## [40,]  9.733652  8.350108 10.830921  9.030654 11.008867
-## [41,]  9.841125 10.387079 10.526889 10.524894 10.279377
-## [42,]  9.298897  9.081792 10.328852  9.416632 11.431758
-## [43,]  9.844688 11.651999  7.916306  8.516530  7.832568
-## [44,]  9.856796  7.282176 10.729941  9.701320  9.910962
-## [45,]  9.596457  6.893947  9.742983  8.939367 10.249205
-## [46,]  8.716902  8.127095 10.044802 10.317154 10.278085
-## [47,] 11.837404 10.622549  9.615727  8.711733  8.857652
-## [48,]  9.660947 11.421858  7.824866  9.382445  8.857173
-## [49,]  9.840874 10.056663  7.776206  8.425925  8.831423
-## [50,] 11.512623  9.604310 10.842551  9.913576 10.005505</code></pre>
+##  [1,] 10.304976 11.855174 11.463237 11.781521 11.725640
+##  [2,]  9.019252 11.658379 10.968346  9.058936  7.617245
+##  [3,] 11.192565 12.193220 11.482989 12.474085 10.332233
+##  [4,] 11.184447 10.730434 11.081579 10.262608 11.955090
+##  [5,]  9.293769  8.108051 10.436723 10.156164 10.075815
+##  [6,]  9.509422  8.726493  9.397714 10.357340 10.788363
+##  [7,] 11.233201 10.826097 10.246820 10.540856 11.694007
+##  [8,] 10.436148  8.661105  8.189580  9.207055  9.028510
+##  [9,]  8.598883 10.171235 10.108757 10.849741  8.572858
+## [10,]  9.494514 10.505986  9.087544  9.961422 10.997113
+## [11,]  9.746307  8.147276 11.150803  7.028269 11.838466
+## [12,] 11.228467  9.175993 10.277565  6.991085  7.689917
+## [13,] 10.030145 10.233695 11.108410  8.423912  9.332634
+## [14,] 11.959475 10.766165 11.574023 11.082995 10.449559
+## [15,] 10.488758 10.133167  9.474415  7.395953 10.393304
+## [16,]  9.744756  8.444180  8.745622  8.700095  9.765750
+## [17,]  8.870741  7.916841  8.744489  7.683955  7.427852
+## [18,]  8.944473  7.452347  8.745862  7.015025  7.423980
+## [19,] 11.260774  8.578411 11.465644  7.156604  8.902151
+## [20,]  8.699644  9.176657  9.721281  7.755237  8.030752
+## [21,] 10.407130  9.722822 10.010766 11.150381 11.091396
+## [22,]  8.121698  8.710748  9.642887 10.965215  8.918000
+## [23,]  9.338239 10.316080 11.025264 10.725899  9.366092
+## [24,] 10.974406 11.258688  9.898264 10.338662  8.920114
+## [25,]  8.912789 10.247580 11.149469 10.113982 10.298113
+## [26,] 10.151874  9.093237  8.217475  9.107439  9.301691
+## [27,] 10.342915 10.050164  8.589612  9.367728  8.867491
+## [28,] 10.350569  9.396490 10.303362 11.299093 10.951180
+## [29,] 10.868391  9.244178 10.545917 10.951057 10.912319
+## [30,]  8.254306  9.876692 10.330170 11.504034  8.924330
+## [31,] 11.287078 10.876885 11.249630 10.035212  8.004213
+## [32,] 10.434128 11.072229  9.390891 10.122504  9.129879
+## [33,] 11.129267  8.753457  9.632318  9.363817  9.744676
+## [34,]  9.492521 10.714411 10.354805 10.551596 11.829446
+## [35,]  9.410219  9.863670 11.694075 10.535849 10.465207
+## [36,] 11.468803  8.730240 10.335485  8.811641  9.751566
+## [37,] 10.998990  8.409658 10.349769  8.842383  8.386538
+## [38,]  8.766037  8.926226 10.275334  9.901529 11.771388
+## [39,] 10.820933  9.874613 10.607323  8.575910 10.304766
+## [40,]  9.684574  8.924139 11.136851  7.962255 10.240178
+## [41,] 10.069403 10.735772 10.603487 10.460006  9.464104
+## [42,]  8.700945  9.186002 10.463761  8.957860 11.387115
+## [43,] 10.157415 11.482410  9.445458  9.169469  7.818240
+## [44,] 10.140821  7.962940 10.637823  9.189936  8.915103
+## [45,]  9.346747  7.426705 10.152305  8.769145  9.265414
+## [46,]  8.244454  8.656733 10.120138 10.258441  9.341766
+## [47,] 11.678409 10.673186 10.626386  8.963259  8.372403
+## [48,]  9.653407 10.817830  8.745654 10.093870  8.902271
+## [49,]  9.966365 10.002926  8.745836  9.038517  8.771838
+## [50,] 11.200850  9.859086 11.199820  9.682683  9.036673</code></pre>
 </div>
 <div id="use-function-compare.copula.sim-to-perform-the-comparison-between-empirical-data-and-multiple-simulated-datasets." class="section level2">
 <h2>Use function <em>compare.copula.sim</em> to perform the comparison between empirical data and multiple simulated datasets.</h2>
 <ul>
-<li>To increase the data variability, we suggest that the data validation option should be turned off. That is, the argument for validation.type should be set to “none”.</li>
+<li>To increase the data variability, we suggest that the data validation option should be turned off when producing multiple simulated datasets. That is, the argument for validation.type should be set to “none”.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 100 simulated dataset</span></span>
-<span id="cb10-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-2" aria-hidden="true" tabindex="-1"></a>simu_S100 <span class="ot">&lt;-</span> <span class="fu">copula.sim</span>(<span class="at">data.input =</span> test_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
-<span id="cb10-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">id.vec =</span> test_data<span class="sc">$</span>id, </span>
-<span id="cb10-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">arm.vec =</span> test_data<span class="sc">$</span>arm,</span>
-<span id="cb10-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">n.patient =</span> <span class="dv">50</span> , </span>
-<span id="cb10-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">n.simulation =</span> <span class="dv">100</span>, </span>
-<span id="cb10-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">seed =</span> <span class="dv">2022</span>, </span>
-<span id="cb10-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">validation.type =</span> <span class="st">"none"</span>,</span>
-<span id="cb10-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare the marginal mean via the function compare.copula.sim </span></span>
-<span id="cb10-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-11" aria-hidden="true" tabindex="-1"></a>compare <span class="ot">&lt;-</span> <span class="fu">compare.copula.sim</span>(simu_S100)</span>
-<span id="cb10-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb10-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(compare<span class="sc">$</span>mean.comparison, <span class="st">"simple"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 100 simulated datasets</span></span>
+<span id="cb10-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-2" aria-hidden="true" tabindex="-1"></a>simu_S100 <span class="ot">&lt;-</span> <span class="fu">copula.sim</span>(<span class="at">data.input =</span> test_data[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
+<span id="cb10-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">id.vec =</span> test_data<span class="sc">$</span>id, </span>
+<span id="cb10-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">arm.vec =</span> test_data<span class="sc">$</span>arm,</span>
+<span id="cb10-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">n.patient =</span> <span class="dv">50</span> , </span>
+<span id="cb10-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">n.simulation =</span> <span class="dv">100</span>, </span>
+<span id="cb10-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">seed =</span> <span class="dv">2022</span>, </span>
+<span id="cb10-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">validation.type =</span> <span class="st">"none"</span>,</span>
+<span id="cb10-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare the marginal mean via the function compare.copula.sim </span></span>
+<span id="cb10-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-12" aria-hidden="true" tabindex="-1"></a>compare <span class="ot">&lt;-</span> <span class="fu">compare.copula.sim</span>(simu_S100)</span>
+<span id="cb10-13"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb10-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(compare<span class="sc">$</span>mean.comparison, <span class="st">"simple"</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -772,13 +779,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="right">30</td>
 <td align="right">50</td>
 <td align="right">100</td>
-<td align="right">10.2698</td>
-<td align="right">10.2748</td>
-<td align="right">0.0488</td>
-<td align="right">10.2884</td>
-<td align="right">0.1218</td>
-<td align="right">1.0257</td>
-<td align="right">0.9617</td>
+<td align="right">10.0794</td>
+<td align="right">10.0856</td>
+<td align="right">0.0618</td>
+<td align="right">10.1295</td>
+<td align="right">0.1321</td>
+<td align="right">1.1890</td>
+<td align="right">1.0867</td>
 </tr>
 <tr class="even">
 <td align="left">time_2</td>
@@ -786,13 +793,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="right">30</td>
 <td align="right">50</td>
 <td align="right">100</td>
-<td align="right">9.7087</td>
-<td align="right">9.7298</td>
-<td align="right">0.2170</td>
-<td align="right">12.2131</td>
-<td align="right">0.1684</td>
-<td align="right">1.2845</td>
-<td align="right">1.1819</td>
+<td align="right">9.9021</td>
+<td align="right">9.9034</td>
+<td align="right">0.0131</td>
+<td align="right">11.3932</td>
+<td align="right">0.1517</td>
+<td align="right">1.2196</td>
+<td align="right">1.1141</td>
 </tr>
 <tr class="odd">
 <td align="left">time_3</td>
@@ -800,13 +807,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="right">30</td>
 <td align="right">50</td>
 <td align="right">100</td>
-<td align="right">9.7115</td>
-<td align="right">9.6781</td>
-<td align="right">-0.3443</td>
-<td align="right">10.5299</td>
-<td align="right">0.1594</td>
-<td align="right">1.3109</td>
-<td align="right">1.2056</td>
+<td align="right">10.0978</td>
+<td align="right">10.0934</td>
+<td align="right">-0.0432</td>
+<td align="right">10.5388</td>
+<td align="right">0.1189</td>
+<td align="right">0.9918</td>
+<td align="right">0.9030</td>
 </tr>
 <tr class="even">
 <td align="left">time_4</td>
@@ -814,13 +821,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="right">30</td>
 <td align="right">50</td>
 <td align="right">100</td>
-<td align="right">10.0132</td>
-<td align="right">9.9832</td>
-<td align="right">-0.3000</td>
-<td align="right">11.5838</td>
-<td align="right">0.1442</td>
-<td align="right">1.2130</td>
-<td align="right">1.0479</td>
+<td align="right">9.9874</td>
+<td align="right">9.9971</td>
+<td align="right">0.0972</td>
+<td align="right">12.0802</td>
+<td align="right">0.1760</td>
+<td align="right">1.3003</td>
+<td align="right">1.1859</td>
 </tr>
 <tr class="odd">
 <td align="left">time_5</td>
@@ -828,60 +835,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="right">30</td>
 <td align="right">50</td>
 <td align="right">100</td>
-<td align="right">10.1295</td>
-<td align="right">10.1259</td>
-<td align="right">-0.0359</td>
-<td align="right">10.0695</td>
-<td align="right">0.1673</td>
-<td align="right">1.3447</td>
-<td align="right">1.2565</td>
+<td align="right">9.6337</td>
+<td align="right">9.6332</td>
+<td align="right">-0.0055</td>
+<td align="right">9.9671</td>
+<td align="right">0.1659</td>
+<td align="right">1.3232</td>
+<td align="right">1.2518</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="employ-function-new.arm.copula.sim-to-simulate-new-multivariate-datasets-with-shifted-mean-vector-from-existing-empirical-data.-this-function-assumes-that-the-dependence-structure-of-the-new-arm-data-and-that-of-the-empirical-data-are-the-same." class="section level2">
-<h2>Employ function <em>new.arm.copula.sim</em> to simulate new multivariate datasets with shifted mean vector from existing empirical data. This function assumes that the dependence structure of the new-arm data and that of the empirical data are the same.</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate Empirical Data </span></span>
-<span id="cb11-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Assume that the single-arm, 3-dimensional empirical data follows multivariate normal data</span></span>
-<span id="cb11-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-3" aria-hidden="true" tabindex="-1"></a>arm1 <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">80</span>, <span class="at">mean  =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="fl">10.5</span>,<span class="dv">11</span>), <span class="at">sigma =</span> <span class="fu">diag</span>(<span class="dv">3</span>))</span>
-<span id="cb11-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-4" aria-hidden="true" tabindex="-1"></a>test_data2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>, <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">80</span>), arm1))</span>
-<span id="cb11-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(test_data2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"arm"</span>, <span class="fu">paste0</span>(<span class="st">"var_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
-<span id="cb11-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 1 simulated datasets with one empirical arm and two new-arm</span></span>
-<span id="cb11-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## The mean difference between empirical arm and </span></span>
-<span id="cb11-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## (i) the 1st new arm is assumed to be 2.5, 2.55, and 2.6 at each time point</span></span>
-<span id="cb11-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## (ii) the 2nd new arm is assumed to be 4.5, 4.55, and 4.6 at each time point</span></span>
-<span id="cb11-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-12" aria-hidden="true" tabindex="-1"></a>newARM <span class="ot">&lt;-</span> <span class="fu">new.arm.copula.sim</span>(<span class="at">data.input =</span> test_data2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
-<span id="cb11-13"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">id.vec =</span> test_data2<span class="sc">$</span>id,</span>
-<span id="cb11-14"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">arm.vec =</span> test_data2<span class="sc">$</span>arm, </span>
-<span id="cb11-15"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-15" aria-hidden="true" tabindex="-1"></a>                             <span class="at">n.patient =</span> <span class="dv">100</span> , </span>
-<span id="cb11-16"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-16" aria-hidden="true" tabindex="-1"></a>                             <span class="at">n.simulation =</span> <span class="dv">1</span>, </span>
-<span id="cb11-17"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-17" aria-hidden="true" tabindex="-1"></a>                             <span class="at">seed =</span> <span class="dv">2022</span>,</span>
-<span id="cb11-18"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">shift.vec.list =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">2.55</span>,<span class="fl">2.6</span>), <span class="fu">c</span>(<span class="fl">4.5</span>,<span class="fl">4.55</span>,<span class="fl">4.6</span>)),</span>
-<span id="cb11-19"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-20"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-21"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the simulated long-form dataset</span></span>
-<span id="cb11-22"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb11-22" aria-hidden="true" tabindex="-1"></a>newARM<span class="sc">$</span>data.simul</span></code></pre></div>
+<div id="employ-function-new.arm.copula.sim-to-simulate-new-multivariate-datasets-with-shifted-mean-vector-from-existing-empirical-data." class="section level2">
+<h2>Employ function <em>new.arm.copula.sim</em> to simulate new multivariate datasets with shifted mean vector from existing empirical data.</h2>
+<ul>
+<li>This function assumes that the dependence structure of the new-arm data and that of the empirical data are the same.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate Empirical Data </span></span>
+<span id="cb11-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Assume that the single-arm, 3-dimensional empirical data follows multivariate normal data</span></span>
+<span id="cb11-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-3" aria-hidden="true" tabindex="-1"></a>arm1 <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">80</span>, <span class="at">mean  =</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="fl">10.5</span>,<span class="dv">11</span>), <span class="at">sigma =</span> <span class="fu">diag</span>(<span class="dv">3</span>))</span>
+<span id="cb11-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-4" aria-hidden="true" tabindex="-1"></a>test_data2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>, <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">80</span>), arm1))</span>
+<span id="cb11-5"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(test_data2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"arm"</span>, <span class="fu">paste0</span>(<span class="st">"time_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span>
+<span id="cb11-6"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate 1 simulated datasets with one empirical arm and two new-arms</span></span>
+<span id="cb11-8"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## The mean difference between empirical arm and </span></span>
+<span id="cb11-9"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## (i) the 1st new arm is assumed to be 2.5, 2.55, and 2.6 at each time point</span></span>
+<span id="cb11-10"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## (ii) the 2nd new arm is assumed to be 4.5, 4.55, and 4.6 at each time point</span></span>
+<span id="cb11-11"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-12" aria-hidden="true" tabindex="-1"></a>newARM <span class="ot">&lt;-</span> <span class="fu">new.arm.copula.sim</span>(<span class="at">data.input =</span> test_data2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], </span>
+<span id="cb11-13"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">id.vec =</span> test_data2<span class="sc">$</span>id,</span>
+<span id="cb11-14"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">arm.vec =</span> test_data2<span class="sc">$</span>arm, </span>
+<span id="cb11-15"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-15" aria-hidden="true" tabindex="-1"></a>                             <span class="at">n.patient =</span> <span class="dv">100</span> , </span>
+<span id="cb11-16"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-16" aria-hidden="true" tabindex="-1"></a>                             <span class="at">n.simulation =</span> <span class="dv">1</span>, </span>
+<span id="cb11-17"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-17" aria-hidden="true" tabindex="-1"></a>                             <span class="at">seed =</span> <span class="dv">2022</span>,</span>
+<span id="cb11-18"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-18" aria-hidden="true" tabindex="-1"></a>                             <span class="at">shift.vec.list =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">2.5</span>,<span class="fl">2.55</span>,<span class="fl">2.6</span>), <span class="fu">c</span>(<span class="fl">4.5</span>,<span class="fl">4.55</span>,<span class="fl">4.6</span>)),</span>
+<span id="cb11-19"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-20"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Obtain the simulated long-form dataset</span></span>
+<span id="cb11-22"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb11-22" aria-hidden="true" tabindex="-1"></a>newARM<span class="sc">$</span>data.simul</span></code></pre></div>
 <pre><code>## # A tibble: 900 x 6
 ##       id   arm col.num col.name data.sim sim.id
 ##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;
-##  1     1     1       1 var_1        9.71      1
-##  2     2     1       1 var_1        9.61      1
-##  3     3     1       1 var_1        8.62      1
-##  4     4     1       1 var_1       11.6       1
-##  5     5     1       1 var_1        9.77      1
-##  6     6     1       1 var_1        9.72      1
-##  7     7     1       1 var_1        8.79      1
-##  8     8     1       1 var_1       10.3       1
-##  9     9     1       1 var_1       10.3       1
-## 10    10     1       1 var_1        8.87      1
+##  1     1     1       1 time_1       9.71      1
+##  2     2     1       1 time_1       9.61      1
+##  3     3     1       1 time_1       8.62      1
+##  4     4     1       1 time_1      11.6       1
+##  5     5     1       1 time_1       9.77      1
+##  6     6     1       1 time_1       9.72      1
+##  7     7     1       1 time_1       8.79      1
+##  8     8     1       1 time_1      10.3       1
+##  9     9     1       1 time_1      10.3       1
+## 10    10     1       1 time_1       8.87      1
 ## # ... with 890 more rows
 ## # i Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Verify the mean difference</span></span>
-<span id="cb13-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb13-2" aria-hidden="true" tabindex="-1"></a>newARM<span class="sc">$</span>data.simul <span class="sc">%&gt;%</span>  </span>
-<span id="cb13-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(.data<span class="sc">$</span>arm, .data<span class="sc">$</span>col.num) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500858617d2f.dir/introduction.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(.data<span class="sc">$</span>data.sim), <span class="at">SD =</span> <span class="fu">sd</span>(.data<span class="sc">$</span>data.sim))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Verify the mean difference</span></span>
+<span id="cb13-2"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb13-2" aria-hidden="true" tabindex="-1"></a>newARM<span class="sc">$</span>data.simul <span class="sc">%&gt;%</span>  </span>
+<span id="cb13-3"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(.data<span class="sc">$</span>arm, .data<span class="sc">$</span>col.num) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="file:///C:/Users/pyen2/AppData/Local/Temp/RtmpQbOEvh/preview-500842965f13.dir/introduction.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(.data<span class="sc">$</span>data.sim), <span class="at">SD =</span> <span class="fu">sd</span>(.data<span class="sc">$</span>data.sim))</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ## # Groups:   arm [3]
 ##     arm col.num     N  Mean    SD
