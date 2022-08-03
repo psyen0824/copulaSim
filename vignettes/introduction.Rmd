@@ -11,19 +11,23 @@ vignette: >
 
 ## Virtual Patient Simulaiton
 
-To optimize clinical trial designs and data analysis methods consistently through trial simulation, we need to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. To make the outcome of optimization more realistic, relevant empirical patient level data should be utilized when it’s available. 
+To consistently optimize clinical trial designs and data analysis methods through trial simulation, we need to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. To make the outcome of optimization more realistic, relevant empirical patient-level data should be utilized when it’s available. 
 
-## The Challenges Faced While Similating Small Data
+## The Challenges Faced while Simulating Small Data
 When simulating small empirical data, the underlying marginal distributions and their dependence structure cannot be understood or verified thoroughly due to the limited sample size. 
 
 ## Solution: Copula Invariance Property 
-We use the copula invariance property, which can generate the joint distribution without making a strong parametric assumption. The copulaSim package is an R package that performs virtual patient simulation based on copula invariance property. To share this finding with the community, we have implemented the copula algorithm into a new R package entitled copulaSim. Below is the demonstration about how to use this package to generate the simulated data.
+To resolve this issue, we could use the copula invariance property to generate the joint distribution without making a strong parametric assumption. The idea of [copula](https://bit.ly/3PZh8DS) was first used in the field of statistics by Dr. Abe Sklar in 1959. From Sklar's theorem, the copula function describes the relationship between the joint and marginal distributions. This function assigns the value of joint distribution to each ordered pair of values of marginal distributions, i.e., the coupla function mapping the range of joint distribution from a d-dimensional ball to a unit line. The copula function can be uniquely determined for every joint distribution. 
+
+Each joint density can be separated into the product of marginal densities and copula density. The copula density, the partial derivative of the copula function, contains all the information about the dependence structure of the joint distribution. As a result, the joint distribution can be flexibly constructed by copula dependency and marginal distribution.
+
+To share this finding with the community, we have implemented the copula algorithm into a new R package entitled copulaSim. The copulaSim package is an R package that performs virtual patient simulation. Below is the idea of the copula simulation algorithm. Based on the copula invariance property, the dependence structure is well preserved while performing quantile transformation in each step. Therefore, this copula simulation algorithm can make the simulated data assemble the empirical data.    
 
 ## Copula Simulation Algorithm 
-![](https://imgur.com/a/gOH3oG8)
 
-![](https://bit.ly/3lfNVG6)
+![](https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/297369637_10228299537732851_2703531645042273957_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=6Mmh5OMMX88AX_bLnxn&_nc_ht=scontent-ord5-1.xx&oh=00_AT9LGv5Bjey1TKa3kjnJZV-kN1FG07QBiId-7S61MxstlA&oe=62EEEE1C)
 
+## The Demonstration of the Package
 ## Generate Empirical Data 
 ### Assume the 1-arm and 5-dimensional empirical data follows multivariate normal data. The sample size of empirical data is 30.
 
@@ -81,7 +85,7 @@ simu_S1 <- copula.sim(data.input = test_data[,-c(1,2)],
                       validation.type = "energy",
                       verbose = TRUE)
 ## Obtain the simulated long-form dataset
-simu_S1$data.simul
+head(simu_S1$data.simul)
 ```
 
 - Also, from the marginal density plot, the copula simulated data is close to the empirical data. 
