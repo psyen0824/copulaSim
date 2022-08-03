@@ -9,27 +9,38 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-## Virtual Patient Simulaiton
+## What is the usage of the R package *copulaSim*?
 
-To consistently optimize clinical trial designs and data analysis methods through trial simulation, we need to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. To make the outcome of optimization more realistic, relevant empirical patient-level data should be utilized when it’s available. 
+This package serves to simulate the joint distribution of empirical patient-level data based on the copula invariance property.
 
-## The Challenges Faced while Simulating Small Data
+
+## Why do we need to perform virtual patient simulation?
+
+To consistently optimize clinical trial designs and data analysis methods through trial simulation, we need to simulate multivariate mixed-type virtual patient data independent of designs and analysis methods under evaluation. To make the outcome of optimization more realistic, we should utilize relevant empirical patient-level data when it is available. 
+
+## The challenges faced when simulating small data
 When simulating small empirical data, the underlying marginal distributions and their dependence structure cannot be understood or verified thoroughly due to the limited sample size. 
 
-## Solution: Copula Invariance Property 
-To resolve this issue, we could use the copula invariance property to generate the joint distribution without making a strong parametric assumption. The idea of [copula](https://bit.ly/3PZh8DS) was first used in the field of statistics by Dr. Abe Sklar in 1959. From Sklar's theorem, the copula function describes the relationship between the joint and marginal distributions. This function assigns the value of joint distribution to each ordered pair of values of marginal distributions, i.e., the coupla function mapping the range of joint distribution from a d-dimensional ball to a unit line. The copula function can be uniquely determined for every joint distribution. 
+## Solution: copula invariance property 
+To resolve this issue, we use the copula invariance property to generate the joint distribution without making a strong parametric assumption. The theoretical background is addressed below.
 
-Each joint density can be separated into the product of marginal densities and copula density. The copula density, the partial derivative of the copula function, contains all the information about the dependence structure of the joint distribution. As a result, the joint distribution can be flexibly constructed by copula dependency and marginal distribution.
+### Sklar's Theorem
 
-To share this finding with the community, we have implemented the copula algorithm into a new R package entitled copulaSim. The copulaSim package is an R package that performs virtual patient simulation. Below is the idea of the copula simulation algorithm. Based on the copula invariance property, the dependence structure is well preserved while performing quantile transformation in each step. Therefore, this copula simulation algorithm can make the simulated data assemble the empirical data.    
+The idea of [copula](https://bit.ly/3PZh8DS) was first introduced by Dr. Abe Sklar in 1959 in the field of statistics. He proposed a theorem, which is later called Sklar's theorem. This theorem essentially consists of two parts. First, the copula function can be used to describe the relationship between the joint and marginal distributions. This function assigns the value of joint distribution to each ordered pair of values of marginal distributions. That is, the coupla function maps the range of joint distribution from a d-dimensional ball to a unit line. The second part is that the copula function can be uniquely determined for every joint distribution. 
 
-## Copula Simulation Algorithm 
+### Why can the copula function be employed to generate joint distribution? 
 
+Each joint density can be viewed as the product of marginal densities multiplied by copula density. The copula density, which is defined as the partial derivative of the copula function, contains all the information about the dependence structure of the joint distribution. As a result, the joint distribution can be flexibly constructed by copula dependency and marginal distributions.
+
+### The implementation of copula into a new R package
+
+To share this finding with the community, we have implemented the copula algorithm into a new R package entitled [*copulaSim*](https://cran.r-project.org/web/packages/copulaSim/index.html). The copulaSim package is designed to perform virtual patient simulation. The idea of the copula simulation algorithm is given in the following. Based on the copula invariance property, the dependence structure of the joint distribution can be well preserved when performing quantile transformation. Because of this feature, the copula simulation algorithm allows for the simulated data to resemble the empirical data.    
+ 
 ![](https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/297369637_10228299537732851_2703531645042273957_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=6Mmh5OMMX88AX_bLnxn&_nc_ht=scontent-ord5-1.xx&oh=00_AT9LGv5Bjey1TKa3kjnJZV-kN1FG07QBiId-7S61MxstlA&oe=62EEEE1C)
 
-## The Demonstration of the Package
-## Generate Empirical Data 
-### Assume the 1-arm and 5-dimensional empirical data follows multivariate normal data. The sample size of empirical data is 30.
+## The demonstration of R Package *copulaSim*
+## Generate empirical data: 
+### Assume that the single-arm, 5-dimensional empirical data follows multivariate normal data, and let the sample size of empirical data be 30.
 
 ```{r, message=FALSE, warning=FALSE}
 library(mvtnorm)
@@ -40,7 +51,7 @@ knitr::kable((test_data), "simple")
 ```
 
 
-## Load Package copulaSim
+## Load package copulaSim
 
 ```{r, message=FALSE, warning=FALSE}
 library(copulaSim)
@@ -70,9 +81,9 @@ library(copulaSim)
 | verbose         | Whether to print message for simulation process or not    | TRUE               |
 +-----------------+-----------------------------------------------------------+--------------------+
 
-- To avoid extreme sampling results, please use "energy" or "ball" in the argument *validation.type* for the purpose of data validation. Doing this could guarantee the similarity between empirical data and the simulated data based on a 2-sample test.
+- As a means of avoiding extreme sampling results when performing one simulated dataset, it is advised to use "energy" or "ball" in the argument *validation.type*. The purpose of doing this is to perform data validation, which ensures the similarity between empirical data and the simulated data based on 2-sample test.
 
-- From the 2-sample test result, the joint distribution of the simulated data is not significantly different from the empirical data.
+- Below shows the 2-sample test result, which indicates that the joint distribution of the simulated data is not significantly different from the empirical data. 
 
 ```{r, message=FALSE, warning=FALSE}
 ## Generate 1 simulated dataset
@@ -88,7 +99,7 @@ simu_S1 <- copula.sim(data.input = test_data[,-c(1,2)],
 head(simu_S1$data.simul)
 ```
 
-- Also, from the marginal density plot, the copula simulated data is close to the empirical data. 
+- Also, from the marginal density plot, we can see that the copula simulated data is close to the empirical data. 
 
 ```{r, message=FALSE, warning=FALSE, fig.dim = c(8, 3)}
 library(dplyr)
@@ -106,7 +117,7 @@ rbind(empir, simul) %>% filter(grepl('time', col.name)) %>%
 ```
 
 
-## Use function *extract.data.sim* to convert simulated data in a list of wide-form matrices
+## Use function *extract.data.sim* to convert simulated data into a list of wide-form matrices
 
 ```{r, message=FALSE, warning=FALSE}
 ## Converting the long-form simulated dataset to wide-form 
@@ -116,7 +127,7 @@ simu.wide
 
 ## Use function *compare.copula.sim* to perform the comparison between empirical data and multiple simulated datasets.
 
-- To increase the data variability, we suggetst that turn off the data validation option, i.e.,  *validation.type = "none"*. 
+- To increase the data variability, we suggest that the data validation option should be turned off. That is, the argument for validation.type should be set to "none". 
 
 ```{r, message=FALSE, warning=FALSE}
 ## Generate 100 simulated dataset
@@ -133,20 +144,19 @@ compare <- compare.copula.sim(simu_S100)
 knitr::kable(compare$mean.comparison, "simple")
 ```
 
-## Use function *new.arm.copula.sim* to simulate new multivariate datasets with shifted mean vector from existing empirical data
-
-- Assume the dependence structure of the new-arm data is as the same as the empirical data.
+## Employ function *new.arm.copula.sim* to simulate new multivariate datasets with shifted mean vector from existing empirical data. This function assumes that the dependence structure of the new-arm data and that of the empirical data are the same.
 
 ```{r, message=FALSE, warning=FALSE}
 ## Generate Empirical Data 
-## Assume the 1-arm and 3-dimensional empirical data follows multivariate normal data.
+##  Assume that the single-arm, 3-dimensional empirical data follows multivariate normal data
 arm1 <- rmvnorm(n = 80, mean  = c(10,10.5,11), sigma = diag(3))
 test_data2 <- as.data.frame(cbind(1:80, rep(1,80), arm1))
 colnames(test_data2) <- c("id", "arm", paste0("var_", 1:3))
 
 ## Generate 1 simulated datasets with one empirical arm and two new-arm
-## The mean difference from empirical arm and the 1st new arm is 2.5, 2.55, and 2.6 at each time point
-## The mean difference from empirical arm and the 2nd new arm is 4.5, 4.55, and 4.6 at each time point
+## The mean difference between empirical arm and 
+## (i) the 1st new arm is assumed to be 2.5, 2.55, and 2.6 at each time point
+## (ii) the 2nd new arm is assumed to be 4.5, 4.55, and 4.6 at each time point
 
 newARM <- new.arm.copula.sim(data.input = test_data2[,-c(1,2)], 
                              id.vec = test_data2$id,
@@ -169,5 +179,8 @@ newARM$data.simul %>%
 
 --------------------
 - Authored by Pei-Shan Yen
-- CRAN page: https://cran.r-project.org/package=copulaSim
+- CRAN page: https://cran.r-project.org/web/packages/copulaSim/index.html
 - github page: https://github.com/psyen0824/ColpulaSim
+--------------------
+## Acknowledgement
+This research project and the development of the R package are supported by AbbVie Experiential Internship Program. I am also grateful to Dr. Xuemin Gu, Dr. Jenny Jiao, and Dr. Jane Zhang at the Eyecare Clinical Statistics Team for valuable comments on this work.
