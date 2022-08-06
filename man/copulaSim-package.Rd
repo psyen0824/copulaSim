@@ -11,7 +11,7 @@ To optimize clinical trial designs and data analysis methods consistently throug
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/psyen0824/ColpulaSim}
+  \item \url{https://github.com/psyen0824/copulaSim}
 }
 
 }

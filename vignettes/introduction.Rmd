@@ -152,7 +152,7 @@ knitr::kable(compare$mean.comparison, "simple")
 ```{r, message=FALSE, warning=FALSE}
 ## Generate Empirical Data 
 ##  Assume that the single-arm, 3-dimensional empirical data follows multivariate normal data
-arm1 <- rmvnorm(n = 80, mean  = c(10,10.5,11), sigma = diag(3))
+arm1 <- rmvnorm(n = 80, mean  = c(10,10.5,11), sigma = diag(3) + 0.5)
 test_data2 <- as.data.frame(cbind(1:80, rep(1,80), arm1))
 colnames(test_data2) <- c("id", "arm", paste0("time_", 1:3))
 

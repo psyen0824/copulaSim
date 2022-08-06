@@ -57,15 +57,16 @@ Based on the empirical data, generating simulated datasets through the copula in
 
 library(copulaSim)
 
-## Generate Empirical Data - assume the 2-arm empirical data follows multivariate normal data.
+## Generate Empirical Data
+ # Assume the 2-arm, 5-dimensional empirical data follows multivariate normal data.
 library(mvtnorm)
-arm1 <- rmvnorm(n = 40, mean  = rep(10, 5), sigma = diag(5))
-arm2 <- rmvnorm(n = 40, mean  = rep(12, 5), sigma = diag(5))
+arm1 <- rmvnorm(n = 40, mean  = rep(10, 5), sigma = diag(5) + 0.5)
+arm2 <- rmvnorm(n = 40, mean  = rep(12, 5), sigma = diag(5) + 0.5)
 test_data <- as.data.frame(cbind(1:80, rep(1:2, each = 40), rbind(arm1, arm2)))
-colnames(test_data) <- c("id","arm",paste0("outcome_", 1:5))
+colnames(test_data) <- c("id","arm",paste0("time_", 1:5))
 
 ## Generate 100 simulated datasets
-copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data[,1], arm.vec = test_data[,2],
+copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data$id, arm.vec = test_data$arm,
 n.patient = 100 , n.simulation = 100, seed = 2022)
 }
 \references{

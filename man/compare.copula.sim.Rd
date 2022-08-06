@@ -12,12 +12,14 @@ compare.copula.sim(object)
 \value{
 Returned the comparison of marginal parameter and covariance.
 \enumerate{
-\item mean.comparison: comparison between empirical mean and average value of simulated mean.
+\item mean.comparison: comparison between empirical marginal mean and average value of simulated marginal mean.
 (1) simu.mean: average value of simulated mean
 (2) simu.sd: average value of simulated standard error
-(3) simu.mean.RB: relative bias for marginal mean
-(4) simu.mean.SB: standardized bias for marginal mean
-(5) simu.mean.RMSE: root mean square error for marginal mean
+(3) simu.mean.low.lim: lower limit of 95\% percentile confidence interval
+(4) simu.mean.upp.lim: upper limit of 95\% percentile confidence interval
+(5) simu.mean.RB: relative bias
+(6) simu.mean.SB: standardized bias
+(7) simu.mean.RMSE: root mean square error
 \item cov.comparison: comparison between empirical covariance and average value of simulated covariance
 }
 }

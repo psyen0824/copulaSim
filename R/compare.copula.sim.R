@@ -2,18 +2,21 @@
 #'
 #' @param object A copula.sim object for the comparison.
 #' @return Returned the comparison of marginal parameter and covariance.
-#'  1. mean.comparison: comparison between empirical mean and average value of simulated mean.
+#'  1. mean.comparison: comparison between empirical marginal mean and average value of simulated marginal mean.
 #'     (1) simu.mean: average value of simulated mean
 #'     (2) simu.sd: average value of simulated standard error
-#'     (3) simu.mean.RB: relative bias for marginal mean
-#'     (4) simu.mean.SB: standardized bias for marginal mean
-#'     (5) simu.mean.RMSE: root mean square error for marginal mean
+#'     (3) simu.mean.low.lim: lower limit of 95% percentile confidence interval
+#'     (4) simu.mean.upp.lim: upper limit of 95% percentile confidence interval
+#'     (5) simu.mean.RB: relative bias
+#'     (6) simu.mean.SB: standardized bias
+#'     (7) simu.mean.RMSE: root mean square error
 #'  2. cov.comparison: comparison between empirical covariance and average value of simulated covariance
 #'
 #' @export
 #' @author Pei-Shan Yen, Xuemin Gu
 #' @importFrom stats sd quantile
 #' @importFrom dplyr left_join
+#' @importFrom magrittr set_names
 compare.copula.sim <- function(object) {
   if (!("copula.sim" %in% class(object))) {
     stop("Only accept copula.sim object.")
@@ -53,6 +56,8 @@ compare.copula.sim <- function(object) {
     bind_rows %>%
     group_by(.data$arm, .data$col.num) %>%
     summarise(
+      simu.mean.low.lim = round(quantile(.data$simu.mean, prob = 0.025), 4),
+      simu.mean.upp.lim = round(quantile(.data$simu.mean, prob = 0.975), 4),
       simu.mean = round(mean(.data$simu.mean),4),
       simu.sd = round(mean(.data$simu.sd),4),
       simu.mean.RB = round(mean(.data$simu.RB),4),
@@ -66,7 +71,7 @@ compare.copula.sim <- function(object) {
     mutate(marginal.name = colnames(object$data.input)) %>%
     select(
       .data$marginal.name, .data$arm, .data$empir.sample, .data$simu.sample, .data$n.simu,
-      .data$empir.mean, .data$simu.mean,
+      .data$empir.mean, .data$simu.mean, .data$simu.mean.low.lim, .data$simu.mean.upp.lim,
       .data$simu.mean.RB, .data$simu.mean.SB, .data$simu.mean.RMSE,
       .data$empir.sd, .data$simu.sd
     ) %>% ungroup

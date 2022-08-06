@@ -35,16 +35,21 @@ Simulating new multivariate datasets with shifted mean vector from existing empi
 
 library(copulaSim)
 
-## Generate Empirical Data - assume the 1-arm empirical data follows multivariate normal data.
+## Generate Empirical Data
+ # Assume that the single-arm, 3-dimensional empirical data follows multivariate normal data
 library(mvtnorm)
-arm1 <- rmvnorm(n = 80, mean  = rep(10, 5), sigma = diag(5))
+arm1 <- rmvnorm(n = 80, mean = c(10,10.5,11), sigma = diag(3) + 0.5)
 test_data <- as.data.frame(cbind(1:80, rep(1,80), arm1))
-colnames(test_data) <- c("id", "arm", paste0("outcome_", 1:5))
+colnames(test_data) <- c("id", "arm", paste0("time_", 1:3))
 
 ## Generate 1 simulated datasets with one empirical arm and two new-arm.
-new.arm.copula.sim(data.input = test_data[,-c(1,2)], id.vec = test_data[,1],
-  arm.vec = test_data[,2], n.patient = 100 , n.simulation = 1, seed = 2022,
-  shift.vec.list = list(rep(1.5,5), rep(3,5) ))
+## The mean difference between empirical arm and
+ # (i) the 1st new arm is assumed to be 2.5, 2.55, and 2.6 at each time point
+ # (ii) the 2nd new arm is assumed to be 4.5, 4.55, and 4.6 at each time point
+new.arm.copula.sim(data.input = test_data[,-c(1,2)],
+  id.vec = test_data$id, arm.vec = test_data$arm,
+  n.patient = 100 , n.simulation = 1, seed = 2022,
+  shift.vec.list = list(c(2.5,2.55,2.6), c(4.5,4.55,4.6)))
 }
 \author{
 Pei-Shan Yen, Xuemin Gu, Jenny Jiao, Jane Zhang
