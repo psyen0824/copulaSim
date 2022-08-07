@@ -2,7 +2,7 @@ Package: copulaSim
 Type: Package
 Title: Virtual Patient Simulation by Copula Invariance Property
 Version: 0.0.1
-Date: 2022-08-01
+Date: 2022-08-06
 Authors@R: c(person('Pei-Shan', 'Yen', email = 'peishan0824@gmail.com', role = c('aut', 'cre'), comment = c(ORCID = '0000-0001-7386-0552')),
       person('Xuemin', 'Gu', email = 'xuemin.gu@abbvie.com', role = 'ctb'),
       person('Jenny', 'Jiao', email = 'jenny.jiao@abbvie.com', role = 'ctb'),
