@@ -27,9 +27,7 @@ empirical.ecdf.inv <-
 #' @param y A numeric matrix which is compared to \code{x}.
 #' @param test.method A string to specify the hypothesis test used to detect the difference
 #'   between input data and the simulated data. Default is "none". Possible methods are
-#'   energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-#'   ("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.
-#    The equability of dependence is typically slow due to Monte Carlo simulation.
+#'   energy distance ("energy") and  ball divergence ("ball"). The R packages "energy" and "Ball" are needed.
 #' @return A list with two elements.
 #'   1. p.value: the p-value of the hypothesis test.
 #'   2. test.result: the returned object of the hypothesis test.
@@ -42,10 +40,6 @@ data.diff.test <- function(x, y, test.method) {
     if(!requireNamespace("Ball")) {stop("You need to install R package Ball.")}
      test.res <- Ball::bd.test(x, y)
     return(list(p.value = test.res$p.value, test.result = test.res))
-  } else if (test.method == "equalCopula") {
-    if(!requireNamespace("TwoCop")) {stop("You need to install R package TwoCop.")}
-     test.res <- TwoCop::TwoCop(x, y)
-    return(list(p.value = test.res$pvalue, test.result = test.res))
   } else {stop("No such test.method!")}
 }
 
@@ -60,9 +54,7 @@ data.diff.test <- function(x, y, test.method) {
 #' @param seed The random seed. Default is NULL to use the current seed.
 #' @param validation.type A string to specify the hypothesis test used to detect the difference
 #'   between input data and the simulated data. Default is "none". Possible methods are
-#'   energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-#'   ("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.
-#    The equability of dependence is typically slow due to Monte Carlo simulation.
+#'   energy distance ("energy") and  ball divergence ("ball"). The R packages "energy" and "Ball" are needed.
 #' @param validation.sig.lvl The significant level (alpha) value for the hypothesis test.
 #' @param rmvnorm.matrix.decomp.method The method to do the matrix decomposition used in the function \code{rmvnorm}. Default is "svd".
 #' @param verbose A logical value to specify whether to print message for simulation process or not.

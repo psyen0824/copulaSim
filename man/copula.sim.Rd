@@ -32,8 +32,7 @@ copula.sim(
 
 \item{validation.type}{A string to specify the hypothesis test used to detect the difference
 between input data and the simulated data. Default is "none". Possible methods are
-energy distance ("energy"), ball divergence ("ball") and the equability of dependence
-("equalCopula"), "energy", "Ball, and "TwoCop" R packages are needed.}
+energy distance ("energy") and  ball divergence ("ball"). The R packages "energy" and "Ball" are needed.}
 
 \item{validation.sig.lvl}{The significant level (alpha) value for the hypothesis test.}
 

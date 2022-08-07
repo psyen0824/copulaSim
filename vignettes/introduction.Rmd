@@ -26,7 +26,7 @@ To resolve this issue, we use the copula invariance property to generate the joi
 
 ### Sklar's Theorem
 
-The idea of [copula](https://bit.ly/3PZh8DS) was first introduced by Dr. Abe Sklar in 1959 in the field of statistics. He proposed a theorem, which is later called Sklar's theorem. This theorem essentially consists of two parts. First, the copula function can be used to describe the relationship between the joint and marginal distributions. This function assigns the value of joint distribution to each ordered pair of values of marginal distributions. That is, the coupla function maps the range of joint distribution from a d-dimensional ball to a unit line. The second part is that the copula function can be uniquely determined for every joint distribution. 
+The idea of [copula](https://en.wikipedia.org/wiki/Copula_(probability_theory)#:~:text=Sklar's) was first introduced by Dr. Abe Sklar in 1959 in the field of statistics. He proposed a theorem, which is later called Sklar's theorem. This theorem essentially consists of two parts. First, the copula function can be used to describe the relationship between the joint and marginal distributions. This function assigns the value of joint distribution to each ordered pair of values of marginal distributions. That is, the coupla function maps the range of joint distribution from a d-dimensional ball to a unit line. The second part is that the copula function can be uniquely determined for every joint distribution. 
 
 ### Why can the copula function be employed to generate joint distribution? 
 
@@ -182,8 +182,8 @@ newARM$data.simul %>%
 
 --------------------
 - Authored by Pei-Shan Yen
-- CRAN page: https://cran.r-project.org/web/packages/copulaSim/index.html
-- github page: https://github.com/psyen0824/ColpulaSim
+- CRAN page: https://CRAN.R-project.org/package=copulaSim
+- github page: https://github.com/psyen0824/colpulaSim
 --------------------
 ## Acknowledgement
 This research project and the development of the R package are supported by AbbVie Experiential Internship Program. I am also grateful to Dr. Xuemin Gu, Dr. Jenny Jiao, and Dr. Jane Zhang at the Eyecare Clinical Statistics Team for valuable comments on this work.
