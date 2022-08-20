@@ -34,7 +34,7 @@ Each joint density can be viewed as the product of marginal densities multiplied
 
 ### The implementation of copula into a new R package
 
-To share this finding with the community, we have implemented the copula algorithm into a new R package entitled [*copulaSim*](https://cran.r-project.org/web/packages/copulaSim/index.html). The copulaSim package is designed to perform virtual patient simulation. The idea of the copula simulation algorithm is given in the following. Based on the copula invariance property, the dependence structure of the joint distribution can be well preserved when performing quantile transformation. Because of this feature, the copula simulation algorithm allows for the simulated data to resemble the empirical data.    
+To share this finding with the community, we have implemented the copula algorithm into a new R package entitled [*copulaSim*](https://CRAN.R-project.org/package=copulaSim). The copulaSim package is designed to perform virtual patient simulation. The idea of the copula simulation algorithm is given in the following. Based on the copula invariance property, the dependence structure of the joint distribution can be well preserved when performing quantile transformation. Because of this feature, the copula simulation algorithm allows for the simulated data to resemble the empirical data.    
  
 ![](https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/297369637_10228299537732851_2703531645042273957_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_ohc=6Mmh5OMMX88AX_bLnxn&_nc_ht=scontent-ord5-1.xx&oh=00_AT9LGv5Bjey1TKa3kjnJZV-kN1FG07QBiId-7S61MxstlA&oe=62EEEE1C)
 
@@ -183,7 +183,7 @@ newARM$data.simul %>%
 --------------------
 - Authored by Pei-Shan Yen
 - CRAN page: https://CRAN.R-project.org/package=copulaSim
-- github page: https://github.com/psyen0824/colpulaSim
+- github page: https://github.com/psyen0824/copulaSim
 --------------------
 ## Acknowledgement
 This research project and the development of the R package are supported by AbbVie Experiential Internship Program. I am also grateful to Dr. Xuemin Gu, Dr. Jenny Jiao, and Dr. Jane Zhang at the Eyecare Clinical Statistics Team for valuable comments on this work.

@@ -48,8 +48,8 @@ compare.copula.sim <- function(object) {
         ) %>%
         left_join(empir.stat.df, c("arm", "col.num")) %>%
         mutate(
-          simu.RB = (.data$simu.mean - .data$empir.mean)/.data$empir.mean*100,
-          simu.SB = abs(.data$simu.mean - .data$empir.mean)/.data$simu.sd*100,
+          simu.RB = (.data$simu.mean - .data$empir.mean)/.data$empir.mean,
+          simu.SB = abs(.data$simu.mean - .data$empir.mean)/.data$simu.sd,
           simu.RMSE = (.data$simu.mean - .data$empir.mean)^2
         )
     }) %>%
